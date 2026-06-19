@@ -1,15 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
   return (
     <section>
-      <div className="relative h-[60vh] min-h-[420px] bg-ink/90 flex items-center justify-center text-paper/50 text-sm">
-        {/*
-          PHOTO NOTE: the PDF uses a Canva stock aerial coastline shot here.
-          Swap this block for a real drone/listing photo before launch —
-          Thomas's own drone footage is a perfect fit for this exact spot.
-        */}
-        [Full-bleed aerial coastline photo]
+      <div className="relative h-[60vh] min-h-[420px]">
+        <Image
+          src="/images/hero-coastline.png"
+          alt="Aerial view of Hawai'i Island coastline"
+          fill
+          priority
+          className="object-cover"
+        />
       </div>
 
       <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-20">

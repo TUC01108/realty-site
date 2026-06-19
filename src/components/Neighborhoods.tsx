@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { NEIGHBORHOODS } from "@/data/neighborhoods";
 
@@ -15,15 +16,14 @@ export default function Neighborhoods() {
           <Link
             key={area.slug}
             href={`/areas/${area.slug}`}
-            className="group relative h-40 sm:h-48 border-t hairline first:border-t-0 flex items-center justify-center overflow-hidden"
+            className="group relative h-40 sm:h-48 border-t hairline first:border-t-0 overflow-hidden block"
           >
-            {/* PHOTO NOTE: each district uses its own real landscape photo in the PDF */}
-            <span className="absolute inset-0 flex items-center justify-center bg-ink/5 text-ink/30 text-xs">
-              [{area.name} landscape photo]
-            </span>
-            <span className="relative font-display text-2xl text-paper [text-shadow:0_1px_10px_rgba(0,0,0,0.6)] group-hover:text-coral transition-colors">
-              {area.name}
-            </span>
+            <Image
+              src={`/images/neighborhoods/${area.slug}.jpg`}
+              alt={area.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
         ))}
       </div>

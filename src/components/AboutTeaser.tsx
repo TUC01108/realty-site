@@ -1,11 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutTeaser() {
   return (
     <section className="bg-sand">
       <div className="mx-auto max-w-6xl px-6 lg:px-8 py-20 lg:py-28 grid gap-12 lg:grid-cols-2 items-center">
-        <div className="aspect-[4/5] w-full bg-ink/10 rounded-sm flex items-center justify-center text-ink/40 text-sm">
-          [Yordana headshot]
+        <div className="relative aspect-[4/5] w-full rounded-sm overflow-hidden">
+          <Image
+            src="/images/headshot.png"
+            alt="Yordana Bolanos Salas"
+            fill
+            className="object-cover"
+          />
         </div>
         <div>
           <p className="eyebrow text-coral">Meet Yordana</p>
