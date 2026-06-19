@@ -58,7 +58,7 @@ export default function ContactCTA() {
               />
               <button
                 type="submit"
-                className="rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-paper hover:text-coral transition-colors"
+                className="rounded-sm bg-paper border border-paper px-6 py-3 text-sm font-medium text-coral hover:bg-transparent hover:text-paper transition-colors"
               >
                 Submit
               </button>

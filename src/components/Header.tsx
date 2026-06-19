@@ -42,11 +42,11 @@ export default function Header() {
 
           <Link href="/" className="flex items-center justify-center px-4">
             <Image
-              src="/images/logo.png"
+              src="/images/logo-square.png"
               alt="Your Big Island Real Estate"
               width={128}
-              height={160}
-              className="w-16 sm:w-24 md:w-32 h-auto"
+              height={128}
+              className="w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 rounded-full object-cover"
               priority
             />
           </Link>
