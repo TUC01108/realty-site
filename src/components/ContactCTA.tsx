@@ -8,29 +8,28 @@ export default function ContactCTA() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // TODO: wire up to a real form handler / CRM (e.g. a serverless
-    // function, Formspree, or your CRM's lead API) before launch.
+    // function, Formspree, or Coldwell Banker's lead system) before launch.
     setSubmitted(true);
   }
 
   return (
-    <section className="bg-evergreen text-paper">
+    <section className="bg-coral text-paper">
       <div className="mx-auto max-w-6xl px-6 lg:px-8 py-20 lg:py-28 grid gap-12 lg:grid-cols-2">
         <div>
-          <p className="eyebrow">Let&apos;s connect</p>
+          <p className="eyebrow text-paper/80">Let&apos;s Connect</p>
           <h2 className="font-display text-3xl lg:text-4xl mt-3">
-            Thinking about buying or selling?
+            Aloha! Let&apos;s start your Hawai&apos;i real estate journey
           </h2>
-          <p className="mt-5 text-paper/75 max-w-md">
-            [Short prompt encouraging visitors to reach out — e.g. mention a
-            free home valuation, a buyer consultation, or just a no-pressure
-            conversation about the market.]
+          <p className="mt-5 text-paper/85 max-w-md">
+            Whether you&apos;re buying, selling, or just curious about the
+            market, reach out and Yordana will follow up personally.
           </p>
         </div>
 
         <div>
           {submitted ? (
             <p className="text-paper">
-              Thank you — we&apos;ll be in touch shortly.
+              Thank you — Yordana will be in touch shortly.
             </p>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-4">
@@ -38,28 +37,28 @@ export default function ContactCTA() {
                 required
                 type="text"
                 placeholder="Full name"
-                className="rounded-sm bg-paper/10 border border-paper/25 px-4 py-3 text-sm placeholder:text-paper/50 focus:outline-none focus:border-brass"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
               />
               <input
                 required
                 type="email"
                 placeholder="Email"
-                className="rounded-sm bg-paper/10 border border-paper/25 px-4 py-3 text-sm placeholder:text-paper/50 focus:outline-none focus:border-brass"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
               />
               <input
                 required
                 type="tel"
                 placeholder="Phone"
-                className="rounded-sm bg-paper/10 border border-paper/25 px-4 py-3 text-sm placeholder:text-paper/50 focus:outline-none focus:border-brass"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
               />
               <textarea
-                placeholder="Message"
+                placeholder="Tell us about your goals — buying, selling, timeline..."
                 rows={4}
-                className="rounded-sm bg-paper/10 border border-paper/25 px-4 py-3 text-sm placeholder:text-paper/50 focus:outline-none focus:border-brass"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
               />
               <button
                 type="submit"
-                className="rounded-sm bg-brass px-6 py-3 text-sm font-medium text-paper hover:bg-paper hover:text-evergreen transition-colors"
+                className="rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-paper hover:text-coral transition-colors"
               >
                 Submit
               </button>

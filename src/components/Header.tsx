@@ -1,14 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { label: "Buy", href: "/listings" },
-  { label: "Sell", href: "/sell" },
-  { label: "Neighborhoods", href: "/neighborhoods" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Areas", href: "/areas" },
+  { label: "Home Search", href: "/home-search" },
+  { label: "Home Valuation", href: "/valuation" },
+  { label: "Let's Connect", href: "/contact" },
 ];
 
 export default function Header() {
@@ -16,9 +16,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b hairline">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8 h-20 flex items-center justify-between">
-        <Link href="/" className="font-display text-xl tracking-wide text-ink">
-          [Agent Name]
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 h-24 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/images/logo.png"
+            alt="Your Big Island Real Estate"
+            width={56}
+            height={56}
+            className="rounded-full"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -26,27 +32,12 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink/80 hover:text-evergreen transition-colors"
+              className="eyebrow text-coral hover:text-coral-dark transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href="tel:+10000000000"
-            className="text-sm font-medium text-ink/80 hover:text-evergreen"
-          >
-            (000) 000-0000
-          </a>
-          <Link
-            href="/contact"
-            className="rounded-sm bg-evergreen px-5 py-2.5 text-sm font-medium text-paper hover:bg-evergreen-light transition-colors"
-          >
-            Let&apos;s Connect
-          </Link>
-        </div>
 
         <button
           aria-label="Toggle menu"
@@ -54,9 +45,9 @@ export default function Header() {
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="block h-px w-6 bg-ink transition-transform" />
           <span className="block h-px w-6 bg-ink" />
-          <span className="block h-px w-6 bg-ink transition-transform" />
+          <span className="block h-px w-6 bg-ink" />
+          <span className="block h-px w-6 bg-ink" />
         </button>
       </div>
 
@@ -66,19 +57,12 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink/80"
+              className="eyebrow text-coral"
               onClick={() => setOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="rounded-sm bg-evergreen px-5 py-2.5 text-sm font-medium text-paper text-center"
-            onClick={() => setOpen(false)}
-          >
-            Let&apos;s Connect
-          </Link>
         </nav>
       )}
     </header>

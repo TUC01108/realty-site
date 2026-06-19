@@ -1,29 +1,31 @@
-const PLACEHOLDER_AREAS = [
-  "[Neighborhood One]",
-  "[Neighborhood Two]",
-  "[Neighborhood Three]",
-  "[Neighborhood Four]",
-];
+import Link from "next/link";
+import { NEIGHBORHOODS } from "@/data/neighborhoods";
 
 export default function Neighborhoods() {
   return (
-    <section className="bg-line/30 py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <p className="eyebrow">Areas served</p>
-        <h2 className="font-display text-3xl lg:text-4xl mt-3">
-          Neighborhoods we know best
+        <h2 className="font-display text-coral text-3xl lg:text-4xl">
+          Explore Life Across the Big Island
         </h2>
+      </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PLACEHOLDER_AREAS.map((area) => (
-            <div key={area} className="group cursor-pointer">
-              <div className="aspect-[4/3] bg-line/60 rounded-sm flex items-center justify-center text-ink/40 text-sm group-hover:opacity-80 transition-opacity">
-                [Area photo]
-              </div>
-              <p className="mt-3 font-display text-lg">{area}</p>
-            </div>
-          ))}
-        </div>
+      <div className="mt-10 flex flex-col">
+        {NEIGHBORHOODS.map((area) => (
+          <Link
+            key={area.slug}
+            href={`/areas/${area.slug}`}
+            className="group relative h-40 sm:h-48 border-t hairline first:border-t-0 flex items-center justify-center overflow-hidden"
+          >
+            {/* PHOTO NOTE: each district uses its own real landscape photo in the PDF */}
+            <span className="absolute inset-0 flex items-center justify-center bg-ink/5 text-ink/30 text-xs">
+              [{area.name} landscape photo]
+            </span>
+            <span className="relative font-display text-2xl text-paper [text-shadow:0_1px_10px_rgba(0,0,0,0.6)] group-hover:text-coral transition-colors">
+              {area.name}
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );

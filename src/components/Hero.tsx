@@ -2,29 +2,36 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative bg-evergreen text-paper">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8 py-28 lg:py-36">
-        <p className="eyebrow">[City / Market Area] Real Estate</p>
-        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mt-4 max-w-2xl">
-          Buying &amp; selling beautifully designed homes
+    <section>
+      <div className="relative h-[60vh] min-h-[420px] bg-ink/90 flex items-center justify-center text-paper/50 text-sm">
+        {/*
+          PHOTO NOTE: the PDF uses a Canva stock aerial coastline shot here.
+          Swap this block for a real drone/listing photo before launch —
+          Thomas's own drone footage is a perfect fit for this exact spot.
+        */}
+        [Full-bleed aerial coastline photo]
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-20">
+        <h1 className="font-display text-coral text-4xl sm:text-5xl lg:text-6xl leading-[1.15] max-w-3xl">
+          Meaningful Journeys in Buying and Selling Homes
         </h1>
-        <p className="mt-6 max-w-xl text-paper/75 text-lg">
-          [One or two sentences establishing the agent&apos;s track record,
-          market, and what makes working with them different — swap in real
-          copy once we have it.]
+        <p className="eyebrow text-ink/70 mt-5">
+          Yordana Bolanos Salas &nbsp;|&nbsp; RS-88323 &nbsp;|&nbsp; Coldwell
+          Banker Island Properties
         </p>
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <Link
-            href="/listings"
-            className="rounded-sm bg-paper px-6 py-3 text-sm font-medium text-evergreen hover:bg-brass hover:text-paper transition-colors"
+            href="/valuation"
+            className="rounded-sm border border-coral px-6 py-3 text-sm font-medium text-coral hover:bg-coral hover:text-paper transition-colors"
           >
-            Browse Available Homes
+            What Is My Home Worth?
           </Link>
           <Link
-            href="/sell"
-            className="rounded-sm border border-paper/40 px-6 py-3 text-sm font-medium hover:bg-paper/10 transition-colors"
+            href="/home-search"
+            className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark transition-colors"
           >
-            What&apos;s My Home Worth
+            Browse Available Homes
           </Link>
         </div>
       </div>

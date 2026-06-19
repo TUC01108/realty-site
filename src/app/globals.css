@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Placeholder palette — swap once the real design PDF arrives */
-  --ink: #1b1b18;
-  --paper: #f6f4ef;
-  --evergreen: #25332a;
-  --evergreen-light: #344a3c;
-  --brass: #8a6d3b;
-  --line: #dad5c9;
+  /* Brand tokens pulled from Yordana's actual design (logo + PDF) */
+  --ink: #1a1a1a;
+  --paper: #ffffff;
+  --coral: #ff4c4c;
+  --coral-dark: #e23e3e;
+  --sand: #f7f4f0;
+  --line: #e8e3dc;
 }
 
 @theme inline {
   --color-ink: var(--ink);
   --color-paper: var(--paper);
-  --color-evergreen: var(--evergreen);
-  --color-evergreen-light: var(--evergreen-light);
-  --color-brass: var(--brass);
+  --color-coral: var(--coral);
+  --color-coral-dark: var(--coral-dark);
+  --color-sand: var(--sand);
   --color-line: var(--line);
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
 }
 
 body {
@@ -36,7 +36,6 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brass);
   font-weight: 600;
 }
 

@@ -30,7 +30,7 @@ export default function Testimonials() {
             <blockquote className="text-ink/75 text-sm leading-relaxed">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
-            <figcaption className="mt-4 text-sm font-medium text-evergreen">
+            <figcaption className="mt-4 text-sm font-medium text-coral">
               — {t.name}
             </figcaption>
           </figure>
