@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* Placeholder palette — swap once the real design PDF arrives */
+  --ink: #1b1b18;
+  --paper: #f6f4ef;
+  --evergreen: #25332a;
+  --evergreen-light: #344a3c;
+  --brass: #8a6d3b;
+  --line: #dad5c9;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-evergreen: var(--evergreen);
+  --color-evergreen-light: var(--evergreen-light);
+  --color-brass: var(--brass);
+  --color-line: var(--line);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.hairline {
+  border-color: var(--line);
+}
