@@ -1,12 +1,5 @@
 "use client";
 
-// ─── FORMSPREE CONFIG ────────────────────────────────────────────
-// 1. Go to formspree.io → New Form → name it "Website Contact"
-// 2. Copy the endpoint URL (looks like https://formspree.io/f/xyzabc12)
-// 3. Paste it below and push — form submissions will arrive by email
-const FORMSPREE_ENDPOINT = "";
-// ─────────────────────────────────────────────────────────────────
-
 import { useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -18,20 +11,19 @@ export default function ContactCTA() {
     e.preventDefault();
     setState("submitting");
 
-    const data = new FormData(e.currentTarget);
-
-    if (!FORMSPREE_ENDPOINT) {
-      // Dev mode — simulate success so the UI is testable without an endpoint
-      await new Promise((r) => setTimeout(r, 800));
-      setState("success");
-      return;
-    }
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       setState(res.ok ? "success" : "error");
     } catch {
@@ -58,7 +50,8 @@ export default function ContactCTA() {
             <div className="rounded-sm bg-paper/10 border border-paper/30 p-8">
               <p className="font-display text-2xl">Mahalo!</p>
               <p className="mt-2 text-paper/85">
-                Yordana will be in touch shortly.
+                Yordana will be in touch shortly. Check your inbox for a
+                confirmation from hello@mail.yourbigislandrealestate.com
               </p>
             </div>
           ) : (

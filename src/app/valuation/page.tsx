@@ -1,12 +1,5 @@
 "use client";
 
-// ─── FORMSPREE CONFIG ────────────────────────────────────────────
-// Paste your Formspree endpoint here once the valuation form is
-// created at formspree.io (separate from the contact form).
-// e.g. "https://formspree.io/f/xyzabc12"
-const FORMSPREE_ENDPOINT = "";
-// ─────────────────────────────────────────────────────────────────
-
 import Image from "next/image";
 import { useState } from "react";
 
@@ -29,20 +22,20 @@ export default function ValuationPage() {
     setState("submitting");
 
     const form = e.currentTarget;
-    const data = new FormData(form);
-
-    if (!FORMSPREE_ENDPOINT) {
-      // Dev mode — just simulate success so the UI can be tested
-      await new Promise((r) => setTimeout(r, 800));
-      setState("success");
-      return;
-    }
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      address: (form.elements.namedItem("address") as HTMLInputElement).value,
+      propertyType: (form.elements.namedItem("propertyType") as HTMLSelectElement).value,
+      notes: (form.elements.namedItem("notes") as HTMLTextAreaElement).value,
+    };
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/valuation", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       setState(res.ok ? "success" : "error");
     } catch {
