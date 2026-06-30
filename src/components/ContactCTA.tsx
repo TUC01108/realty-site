@@ -1,15 +1,42 @@
 "use client";
 
+// ─── FORMSPREE CONFIG ────────────────────────────────────────────
+// 1. Go to formspree.io → New Form → name it "Website Contact"
+// 2. Copy the endpoint URL (looks like https://formspree.io/f/xyzabc12)
+// 3. Paste it below and push — form submissions will arrive by email
+const FORMSPREE_ENDPOINT = "";
+// ─────────────────────────────────────────────────────────────────
+
 import { useState } from "react";
 
-export default function ContactCTA() {
-  const [submitted, setSubmitted] = useState(false);
+type FormState = "idle" | "submitting" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function ContactCTA() {
+  const [state, setState] = useState<FormState>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire up to a real form handler / CRM (e.g. a serverless
-    // function, Formspree, or Coldwell Banker's lead system) before launch.
-    setSubmitted(true);
+    setState("submitting");
+
+    const data = new FormData(e.currentTarget);
+
+    if (!FORMSPREE_ENDPOINT) {
+      // Dev mode — simulate success so the UI is testable without an endpoint
+      await new Promise((r) => setTimeout(r, 800));
+      setState("success");
+      return;
+    }
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      setState(res.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   }
 
   return (
@@ -27,40 +54,61 @@ export default function ContactCTA() {
         </div>
 
         <div>
-          {submitted ? (
-            <p className="text-paper">
-              Thank you — Yordana will be in touch shortly.
-            </p>
+          {state === "success" ? (
+            <div className="rounded-sm bg-paper/10 border border-paper/30 p-8">
+              <p className="font-display text-2xl">Mahalo!</p>
+              <p className="mt-2 text-paper/85">
+                Yordana will be in touch shortly.
+              </p>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-4">
               <input
                 required
+                name="name"
                 type="text"
                 placeholder="Full name"
-                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors"
               />
               <input
                 required
+                name="email"
                 type="email"
                 placeholder="Email"
-                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors"
               />
               <input
                 required
+                name="phone"
                 type="tel"
                 placeholder="Phone"
-                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors"
               />
               <textarea
-                placeholder="Tell us about your goals — buying, selling, timeline..."
+                name="message"
+                placeholder="Tell us about your goals — buying, selling, timeline…"
                 rows={4}
-                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper"
+                className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors"
               />
+
+              {state === "error" && (
+                <p className="text-sm text-paper/80">
+                  Something went wrong — please email us directly at{" "}
+                  <a
+                    href="mailto:yourbigislandrealestate@gmail.com"
+                    className="underline"
+                  >
+                    yourbigislandrealestate@gmail.com
+                  </a>
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="rounded-sm bg-paper border border-paper px-6 py-3 text-sm font-medium text-coral hover:bg-transparent hover:text-paper transition-colors"
+                disabled={state === "submitting"}
+                className="rounded-sm bg-paper border border-paper px-6 py-3 text-sm font-medium text-coral hover:bg-transparent hover:text-paper disabled:opacity-60 transition-colors"
               >
-                Submit
+                {state === "submitting" ? "Sending…" : "Submit"}
               </button>
             </form>
           )}
