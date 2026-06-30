@@ -1,11 +1,9 @@
-// ─── VIDEO CONFIG ────────────────────────────────────────────────
-// When Yordana's video is ready, paste the YouTube URL here.
-// It will autoplay muted on loop automatically — no play button.
-//
-// YouTube example: "https://www.youtube.com/watch?v=VIDEO_ID"
-// Vimeo example:   "https://player.vimeo.com/video/VIDEO_ID"
-//
-const VIDEO_URL = ""; // ← paste URL here when ready
+// ─── PERSONAL VIDEO CONFIG ───────────────────────────────────────
+// This is Yordana's personal welcome/introduction video — separate
+// from the silent looping coastline at the top of the page.
+// When her video is ready, paste the YouTube URL here:
+// e.g. "https://www.youtube.com/watch?v=VIDEO_ID"
+const VIDEO_URL = "";
 // ─────────────────────────────────────────────────────────────────
 
 import Image from "next/image";
@@ -19,7 +17,6 @@ function toEmbedUrl(url: string): string {
   if (watch)
     return `https://www.youtube.com/embed/${watch[1]}?autoplay=1&mute=1&loop=1&playlist=${watch[1]}&controls=0&rel=0&playsinline=1`;
 
-  // Vimeo or already an embed URL
   const sep = url.includes("?") ? "&" : "?";
   return `${url}${sep}autoplay=1&muted=1&loop=1&background=1`;
 }
@@ -43,16 +40,28 @@ export default function WelcomeVideo() {
               title="Welcome message from Yordana Bolanos Salas"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               className="absolute inset-0 w-full h-full border-0 scale-[1.03]"
-              /* scale-[1.03] hides the thin YouTube letterbox border at edges */
             />
           ) : (
-            /* ── STATIC IMAGE — shown until VIDEO_URL is set ── */
-            <Image
-              src="/images/hero-coastline.png"
-              alt="Hawai'i Island coastline"
-              fill
-              className="object-cover"
-            />
+            /* ── PLACEHOLDER — her headshot with YouTube-style play button ── */
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
+              <Image
+                src="/images/headshot.png"
+                alt="Yordana Bolanos Salas"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-ink/30" />
+              {/* Play button */}
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-paper/90 shadow-md">
+                <span
+                  className="ml-1.5 h-0 w-0 border-y-[14px] border-y-transparent border-l-[22px] border-l-coral"
+                  aria-hidden
+                />
+              </div>
+              <p className="relative eyebrow text-paper text-center px-8 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
+                Yordana&apos;s personal welcome video — coming soon
+              </p>
+            </div>
           )}
         </div>
       </div>
