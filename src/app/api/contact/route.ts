@@ -13,11 +13,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    console.log("Sending contact emails for:", name, email);
     await sendContactEmails({ name, email, phone, message: message || "" });
+    console.log("Contact emails sent successfully");
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact form error:", err);
+    console.error("Contact form error:", JSON.stringify(err));
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }
