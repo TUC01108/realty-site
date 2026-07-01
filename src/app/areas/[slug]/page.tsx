@@ -22,8 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function detailImagePath(slug: string, n: 1 | 2): string {
-  // north-kona detail-1 was extracted as .png, everything else is .jpeg
-  if (slug === "north-kona" && n === 1) return `/images/neighborhoods/${slug}-detail-${n}.png`;
   return `/images/neighborhoods/${slug}-detail-${n}.jpeg`;
 }
 
