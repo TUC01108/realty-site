@@ -66,7 +66,7 @@ export default function ValuationPage() {
       </section>
 
       {/* ── HOUSE IMAGE with address bar overlaid ── */}
-      <section className="relative">
+      <section className="relative mt-6 lg:mt-8">
         <div className="relative w-full h-72 sm:h-96">
           <Image
             src="/images/valuation-house.png"
@@ -229,6 +229,171 @@ export default function ValuationPage() {
               </div>
             </form>
           )}
+        </div>
+      </section>
+      {/* ── SECTION 1: What's Your Property Worth? ── */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24 grid gap-12 lg:grid-cols-2 items-start">
+        <div>
+          <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">
+            What&apos;s Your Property Worth?
+          </h2>
+          <p className="mt-6 text-ink/70 leading-relaxed">
+            Home valuations give you valuable knowledge that can help you plan
+            for the future and make smart decisions. It&apos;s good practice to
+            stay informed about how much equity you have in your home and how
+            much you may be able to borrow against it or sell it for.
+          </p>
+          <p className="mt-4 text-ink/70 leading-relaxed">
+            Our tool provides a more robust, accurate assessment than you&apos;ll
+            get from the major real estate portals. For the most precise
+            valuation, reach out to discuss a customized Comparative Market
+            Analysis or an appraisal.
+          </p>
+        </div>
+        <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
+          <Image
+            src="/images/valuation-pool.png"
+            alt="Luxury Hawai'i property with pool"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </section>
+
+      {/* ── SECTION 2: How Is a Valuation Performed? ── */}
+      <section className="bg-coral text-paper">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24">
+          <h2 className="font-display text-3xl lg:text-5xl leading-tight">
+            How Is a Valuation Performed?
+          </h2>
+          <p className="mt-2 text-paper/80 text-sm">
+            Two Accurate Ways to Perform Home Valuations
+          </p>
+
+          <div className="mt-12 grid gap-0 lg:grid-cols-2 relative">
+            {/* Center divider — visible on desktop */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-paper/20" />
+
+            {/* CMA */}
+            <div className="lg:pr-16 pb-12 lg:pb-0">
+              <p className="eyebrow text-paper/70 text-right lg:text-right">
+                Market Analysis
+              </p>
+              <div className="flex items-start gap-4 mt-3">
+                <div className="hidden lg:flex items-center justify-end w-full">
+                  <div>
+                    <h3 className="font-display text-2xl text-right">
+                      Comparative Market Analysis
+                    </h3>
+                    <p className="mt-3 text-paper/80 text-sm leading-relaxed text-right">
+                      A Comparative Market Analysis (CMA) is a tool used by
+                      real estate agents to value a home. It evaluates similar
+                      homes that have recently sold in the same area. Agents
+                      find comparable sales and use them to conduct a sales
+                      comparison. In most cases, an agent will find three homes
+                      that have recently sold and are as similar to and located
+                      as close to the home being valued as possible. Each one is
+                      then analyzed to pinpoint differences between it and the
+                      home being valued. Once these differences are priced out,
+                      the price of each comp is adjusted to see what it would
+                      cost if it was identical to the home being valued were it
+                      to be sold in the current market.
+                    </p>
+                  </div>
+                </div>
+                {/* Mobile version left-aligned */}
+                <div className="lg:hidden">
+                  <h3 className="font-display text-2xl">
+                    Comparative Market Analysis
+                  </h3>
+                  <p className="mt-3 text-paper/80 text-sm leading-relaxed">
+                    A CMA is a tool used by real estate agents to value a home.
+                    It evaluates similar homes that have recently sold in the
+                    same area, finding three comparable homes to analyze and
+                    adjust for differences to determine current market value.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Professional Appraisal */}
+            <div className="lg:pl-16 border-t border-paper/20 lg:border-t-0 pt-12 lg:pt-0">
+              <div>
+                <h3 className="font-display text-2xl">
+                  Based on a Professional&apos;s Opinion
+                </h3>
+                <p className="eyebrow text-paper/70 mt-1">
+                  Professional Appraisal
+                </p>
+                <p className="mt-3 text-paper/80 text-sm leading-relaxed">
+                  An appraisal is an unbiased valuation of a home based on a
+                  professional&apos;s opinion. They are usually what mortgage
+                  companies use for home purchases and refinances. A lender
+                  usually orders a home appraisal and the cost of the appraisal,
+                  sometimes up to $500, is paid by the homeowner. An appraiser
+                  does a complete visual inspection of the interior and exterior
+                  of the home as well as taking into consideration recent sales
+                  of similar properties and market trends. The appraiser then
+                  compiles a detailed report on the home, including an exterior
+                  building sketch, a street map showing the home and any
+                  comparable sales, photos of the home and street, an
+                  explanation of how the square footage was calculated, and any
+                  other relevant information.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3: Why Is a Valuation Important? ── */}
+      <section className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24">
+        <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">
+          Why Is a Valuation Important?
+        </h2>
+        <p className="mt-2 text-ink/60 text-sm">
+          Situations When a Home Valuation May Be Necessary
+        </p>
+
+        <div className="mt-12 grid gap-0 lg:grid-cols-2 relative">
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-line" />
+
+          {[
+            {
+              side: "right",
+              eyebrow: "Refinancing",
+              text: "Lenders base the amount of their loans on the value of your property and usually allow you to borrow a maximum of 75% to 96.5% against your property. Knowing what your home is worth allows lenders to calculate your equity in the home. The more equity you have, the better terms you will receive on your refinance.",
+            },
+            {
+              side: "left",
+              eyebrow: "Home Improvements",
+              text: "If you're doing home improvement projects to increase the resale value, you want to make sure you're not pricing it out of the market. When you get a valuation, you can see how your home compares with others in the neighborhood and let this guide your home improvement decisions.",
+            },
+            {
+              side: "right",
+              eyebrow: "Qualifying for Credit",
+              text: "If you want to borrow cash against your home, getting a Home Equity Line of Credit (HELOC) could be a good option. To qualify, you must have a certain level of equity in your home. Most lenders require at least 20%. Getting a home valuation will help you determine if you qualify and will be used by the lender to make a decision on your loan.",
+            },
+            {
+              side: "left",
+              eyebrow: "Planning",
+              text: "Though it's not a necessity, simply knowing the value of your home is good information to have. It will help you plan for the future and deal with unforeseen circumstances when you might be in a position that requires extra money or a quick relocation.",
+            },
+          ].map((item) => (
+            <div
+              key={item.eyebrow}
+              className={`py-10 border-t hairline first:border-t-0 ${
+                item.side === "right"
+                  ? "lg:pl-16 lg:col-start-2"
+                  : "lg:pr-16 lg:col-start-1"
+              }`}
+            >
+              <p className="eyebrow text-coral">{item.eyebrow}</p>
+              <p className="mt-3 text-ink/70 text-sm leading-relaxed">
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     </>
