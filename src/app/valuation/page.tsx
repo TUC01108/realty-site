@@ -12,14 +12,12 @@ export default function ValuationPage() {
 
   function handleAddressSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Scroll down to the form smoothly
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("submitting");
-
     const form = e.currentTarget;
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
@@ -29,94 +27,46 @@ export default function ValuationPage() {
       propertyType: "Not specified",
       notes: "",
     };
-
     try {
-      const res = await fetch("/api/valuation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch("/api/valuation", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       setState(res.ok ? "success" : "error");
-    } catch {
-      setState("error");
-    }
+    } catch { setState("error"); }
   }
 
   return (
     <>
-      {/* ── HERO BANNER — aerial coastline ── */}
+      {/* ── HERO BANNER ── */}
       <section className="relative h-56 sm:h-72 flex items-center justify-center">
-        <Image
-          src="/images/valuation-hero.jpeg"
-          alt="Aerial view of Hawai'i Island coastline"
-          fill
-          priority
-          className="object-cover"
-        />
+        <Image src="/images/valuation-hero.jpeg" alt="Aerial view of Hawai'i Island coastline" fill priority className="object-cover" />
         <div className="absolute inset-0 bg-ink/35" />
         <div className="relative text-center text-paper px-6">
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide">
-            How Much Is Your Home Worth?
-          </h1>
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide">How Much Is Your Home Worth?</h1>
           <p className="mt-3 text-sm sm:text-base text-paper/85">
-            Instant property valuation&nbsp;&nbsp;|&nbsp;&nbsp;Trusted
-            guidance&nbsp;&nbsp;|&nbsp;&nbsp;Maximize Value
+            Instant property valuation&nbsp;&nbsp;|&nbsp;&nbsp;Trusted guidance&nbsp;&nbsp;|&nbsp;&nbsp;Maximize Value
           </p>
         </div>
       </section>
 
-      {/* ── HOUSE IMAGE with address bar overlaid ── */}
-      <section className="relative mt-6 lg:mt-8">
-        <div className="relative w-full h-72 sm:h-96">
-          <Image
-            src="/images/valuation-house.png"
-            alt="Luxury Hawai'i property"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-ink/40" />
-
-          {/* Overlaid content */}
-          <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10">
-            <div>
-              <h2 className="font-display text-2xl sm:text-3xl text-paper uppercase tracking-wide">
-                How Much Is Your Home Worth?
-              </h2>
-              <div className="flex flex-wrap gap-6 mt-3">
-                {["Instant property valuation", "Expert advice", "Sell for more"].map((item) => (
-                  <span key={item} className="flex items-center gap-1.5 text-xs text-paper/90">
-                    <span className="text-paper">✓</span> {item}
-                  </span>
-                ))}
-              </div>
+      {/* ── ADDRESS BAR — coral banner, no background image ── */}
+      <section className="mt-6 lg:mt-8 bg-coral">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 py-10">
+          <form onSubmit={handleAddressSubmit} className="flex items-stretch gap-0 bg-paper rounded-sm overflow-hidden max-w-3xl mx-auto shadow-md">
+            <div className="flex items-center pl-4 text-ink/40">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
             </div>
-
-            {/* Address bar */}
-            <form
-              onSubmit={handleAddressSubmit}
-              className="flex items-stretch gap-0 bg-paper/95 rounded-sm overflow-hidden"
-            >
-              <div className="flex items-center pl-4 text-ink/40">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter your home address…"
-                className="flex-1 px-3 py-3 text-sm text-ink bg-transparent placeholder:text-ink/40 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-coral text-paper px-5 py-3 text-xs font-medium eyebrow hover:bg-coral-dark transition-colors shrink-0"
-              >
-                Get a Free Home Valuation
-              </button>
-            </form>
-          </div>
+            <input
+              type="text"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+              placeholder="Enter your home address…"
+              className="flex-1 px-3 py-4 text-sm text-ink bg-transparent placeholder:text-ink/40 focus:outline-none"
+            />
+            <button type="submit" className="bg-coral text-paper px-6 py-4 text-xs font-medium eyebrow hover:bg-coral-dark transition-colors shrink-0 border-l border-paper/20">
+              Get a Free Home Valuation
+            </button>
+          </form>
         </div>
       </section>
 
@@ -124,223 +74,89 @@ export default function ValuationPage() {
       <section ref={formRef} className="bg-sand py-16 lg:py-20">
         <div className="mx-auto max-w-xl px-6 lg:px-8">
           <p className="eyebrow text-ink/60">Free Home Valuation</p>
-          <h2 className="font-display text-2xl lg:text-3xl mt-2">
-            Get Your Instant Home Valuation
-          </h2>
-          <p className="text-ink/60 mt-2 text-sm">
-            Enter your details to see how much your home is worth.
-          </p>
+          <h2 className="font-display text-2xl lg:text-3xl mt-2">Get Your Instant Home Valuation</h2>
+          <p className="text-ink/60 mt-2 text-sm">Enter your details to see how much your home is worth.</p>
 
           {state === "success" ? (
             <div className="mt-10 rounded-sm bg-coral/10 border border-coral/30 p-8">
               <p className="font-display text-2xl text-coral">Thank you!</p>
-              <p className="mt-2 text-ink/70">
-                Yordana will be in touch within 24 hours with your home
-                valuation. Check your inbox for a confirmation email.
-              </p>
+              <p className="mt-2 text-ink/70">Yordana will be in touch within 24 hours with your home valuation. Check your inbox for a confirmation email.</p>
             </div>
           ) : (
             <form onSubmit={handleFormSubmit} className="mt-8 grid gap-6">
               <div className="flex flex-col gap-1.5">
                 <label className="eyebrow text-ink/60">Full Name *</label>
-                <input
-                  required
-                  name="name"
-                  type="text"
-                  className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors"
-                />
+                <input required name="name" type="text" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" />
               </div>
-
               <div className="flex flex-col gap-1.5">
                 <label className="eyebrow text-ink/60">Email *</label>
-                <input
-                  required
-                  name="email"
-                  type="email"
-                  className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors"
-                />
+                <input required name="email" type="email" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" />
               </div>
-
               <div className="flex flex-col gap-1.5">
                 <label className="eyebrow text-ink/60">Phone *</label>
-                <input
-                  required
-                  name="phone"
-                  type="tel"
-                  className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors"
-                />
+                <input required name="phone" type="tel" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" />
               </div>
-
-              {/* Show the address they entered above — read-only confirmation */}
               {address && (
                 <div className="flex flex-col gap-1.5">
                   <label className="eyebrow text-ink/60">Property Address</label>
-                  <p className="border-b border-ink/20 pb-2 text-sm text-ink/70">
-                    {address}
-                  </p>
+                  <p className="border-b border-ink/20 pb-2 text-sm text-ink/70">{address}</p>
                 </div>
               )}
-
               <div className="flex items-start gap-3">
-                <input
-                  required
-                  type="checkbox"
-                  name="consent"
-                  id="consent"
-                  className="mt-1 accent-coral"
-                />
+                <input required type="checkbox" name="consent" id="consent" className="mt-1 accent-coral" />
                 <label htmlFor="consent" className="text-xs text-ink/50 leading-relaxed">
-                  I agree to be contacted by Yordana Bolanos Salas via call,
-                  email, and text for real estate services. To opt out, reply
-                  &lsquo;stop&rsquo; at any time. Message and data rates may apply.
+                  I agree to be contacted by Yordana Bolanos Salas via call, email, and text for real estate services. To opt out, reply &lsquo;stop&rsquo; at any time. Message and data rates may apply.
                 </label>
               </div>
-
               {state === "error" && (
-                <p className="text-sm text-red-600">
-                  Something went wrong — please email us at{" "}
-                  <a
-                    href="mailto:yourbigislandrealestate@gmail.com"
-                    className="underline"
-                  >
-                    yourbigislandrealestate@gmail.com
-                  </a>
-                </p>
+                <p className="text-sm text-red-600">Something went wrong — please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>
               )}
-
-              <button
-                type="submit"
-                disabled={state === "submitting"}
-                className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark disabled:opacity-60 transition-colors uppercase tracking-widest"
-              >
-                {state === "submitting"
-                  ? "Submitting…"
-                  : "Unlock Your Free Valuation"}
+              <button type="submit" disabled={state==="submitting"} className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark disabled:opacity-60 transition-colors uppercase tracking-widest">
+                {state==="submitting" ? "Submitting…" : "Unlock Your Free Valuation"}
               </button>
-
               <div className="flex flex-wrap gap-6 text-xs text-ink/50">
-                {["Instant result", "Sell for more", "Get expert advice"].map(
-                  (item) => (
-                    <span key={item} className="flex items-center gap-1.5">
-                      <span className="text-coral">✓</span> {item}
-                    </span>
-                  )
-                )}
+                {["Instant result","Sell for more","Get expert advice"].map(item => (
+                  <span key={item} className="flex items-center gap-1.5"><span className="text-coral">✓</span> {item}</span>
+                ))}
               </div>
             </form>
           )}
         </div>
       </section>
+
       {/* ── SECTION 1: What's Your Property Worth? ── */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24 grid gap-12 lg:grid-cols-2 items-start">
         <div>
-          <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">
-            What&apos;s Your Property Worth?
-          </h2>
-          <p className="mt-6 text-ink/70 leading-relaxed">
-            Home valuations give you valuable knowledge that can help you plan
-            for the future and make smart decisions. It&apos;s good practice to
-            stay informed about how much equity you have in your home and how
-            much you may be able to borrow against it or sell it for.
-          </p>
-          <p className="mt-4 text-ink/70 leading-relaxed">
-            Our tool provides a more robust, accurate assessment than you&apos;ll
-            get from the major real estate portals. For the most precise
-            valuation, reach out to discuss a customized Comparative Market
-            Analysis or an appraisal.
-          </p>
+          <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">What&apos;s Your Property Worth?</h2>
+          <p className="mt-6 text-ink/70 leading-relaxed">Home valuations give you valuable knowledge that can help you plan for the future and make smart decisions. It&apos;s good practice to stay informed about how much equity you have in your home and how much you may be able to borrow against it or sell it for.</p>
+          <p className="mt-4 text-ink/70 leading-relaxed">Our tool provides a more robust, accurate assessment than you&apos;ll get from the major real estate portals. For the most precise valuation, reach out to discuss a customized Comparative Market Analysis or an appraisal.</p>
         </div>
         <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
-          <Image
-            src="/images/valuation-pool.png"
-            alt="Luxury Hawai'i property with pool"
-            fill
-            className="object-cover"
-          />
+          <Image src="/images/valuation-pool.png" alt="Luxury Hawai'i property with pool" fill className="object-cover" />
         </div>
       </section>
 
       {/* ── SECTION 2: How Is a Valuation Performed? ── */}
       <section className="bg-coral text-paper">
         <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24">
-          <h2 className="font-display text-3xl lg:text-5xl leading-tight">
-            How Is a Valuation Performed?
-          </h2>
-          <p className="mt-2 text-paper/80 text-sm">
-            Two Accurate Ways to Perform Home Valuations
-          </p>
-
+          <h2 className="font-display text-3xl lg:text-5xl leading-tight">How Is a Valuation Performed?</h2>
+          <p className="mt-2 text-paper/80 text-sm">Two Accurate Ways to Perform Home Valuations</p>
           <div className="mt-12 grid gap-0 lg:grid-cols-2 relative">
-            {/* Center divider — visible on desktop */}
             <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-paper/20" />
-
-            {/* CMA */}
             <div className="lg:pr-16 pb-12 lg:pb-0">
-              <p className="eyebrow text-paper/70 text-right lg:text-right">
-                Market Analysis
-              </p>
-              <div className="flex items-start gap-4 mt-3">
-                <div className="hidden lg:flex items-center justify-end w-full">
-                  <div>
-                    <h3 className="font-display text-2xl text-right">
-                      Comparative Market Analysis
-                    </h3>
-                    <p className="mt-3 text-paper/80 text-sm leading-relaxed text-right">
-                      A Comparative Market Analysis (CMA) is a tool used by
-                      real estate agents to value a home. It evaluates similar
-                      homes that have recently sold in the same area. Agents
-                      find comparable sales and use them to conduct a sales
-                      comparison. In most cases, an agent will find three homes
-                      that have recently sold and are as similar to and located
-                      as close to the home being valued as possible. Each one is
-                      then analyzed to pinpoint differences between it and the
-                      home being valued. Once these differences are priced out,
-                      the price of each comp is adjusted to see what it would
-                      cost if it was identical to the home being valued were it
-                      to be sold in the current market.
-                    </p>
-                  </div>
-                </div>
-                {/* Mobile version left-aligned */}
-                <div className="lg:hidden">
-                  <h3 className="font-display text-2xl">
-                    Comparative Market Analysis
-                  </h3>
-                  <p className="mt-3 text-paper/80 text-sm leading-relaxed">
-                    A CMA is a tool used by real estate agents to value a home.
-                    It evaluates similar homes that have recently sold in the
-                    same area, finding three comparable homes to analyze and
-                    adjust for differences to determine current market value.
-                  </p>
-                </div>
+              <div className="hidden lg:block">
+                <h3 className="font-display text-2xl text-right">Comparative Market Analysis</h3>
+                <p className="mt-3 text-paper/80 text-sm leading-relaxed text-right">A Comparative Market Analysis (CMA) is a tool used by real estate agents to value a home. It evaluates similar homes that have recently sold in the same area. Agents find comparable sales and use them to conduct a sales comparison. In most cases, an agent will find three homes that have recently sold and are as similar to and located as close to the home being valued as possible. Each one is then analyzed to pinpoint differences between it and the home being valued.</p>
+              </div>
+              <div className="lg:hidden">
+                <h3 className="font-display text-2xl">Comparative Market Analysis</h3>
+                <p className="mt-3 text-paper/80 text-sm leading-relaxed">A CMA is a tool used by real estate agents to value a home. It evaluates similar homes that have recently sold in the same area, finding three comparable homes to analyze and adjust for differences to determine current market value.</p>
               </div>
             </div>
-
-            {/* Professional Appraisal */}
             <div className="lg:pl-16 border-t border-paper/20 lg:border-t-0 pt-12 lg:pt-0">
-              <div>
-                <h3 className="font-display text-2xl">
-                  Based on a Professional&apos;s Opinion
-                </h3>
-                <p className="eyebrow text-paper/70 mt-1">
-                  Professional Appraisal
-                </p>
-                <p className="mt-3 text-paper/80 text-sm leading-relaxed">
-                  An appraisal is an unbiased valuation of a home based on a
-                  professional&apos;s opinion. They are usually what mortgage
-                  companies use for home purchases and refinances. A lender
-                  usually orders a home appraisal and the cost of the appraisal,
-                  sometimes up to $500, is paid by the homeowner. An appraiser
-                  does a complete visual inspection of the interior and exterior
-                  of the home as well as taking into consideration recent sales
-                  of similar properties and market trends. The appraiser then
-                  compiles a detailed report on the home, including an exterior
-                  building sketch, a street map showing the home and any
-                  comparable sales, photos of the home and street, an
-                  explanation of how the square footage was calculated, and any
-                  other relevant information.
-                </p>
-              </div>
+              <h3 className="font-display text-2xl">Based on a Professional&apos;s Opinion</h3>
+              <p className="eyebrow text-paper/70 mt-1">Professional Appraisal</p>
+              <p className="mt-3 text-paper/80 text-sm leading-relaxed">An appraisal is an unbiased valuation of a home based on a professional&apos;s opinion. They are usually what mortgage companies use for home purchases and refinances. A lender usually orders a home appraisal and the cost of the appraisal, sometimes up to $500, is paid by the homeowner. An appraiser does a complete visual inspection of the interior and exterior of the home as well as recent sales of similar properties and market trends, then compiles a detailed report.</p>
             </div>
           </div>
         </div>
@@ -348,50 +164,19 @@ export default function ValuationPage() {
 
       {/* ── SECTION 3: Why Is a Valuation Important? ── */}
       <section className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-24">
-        <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">
-          Why Is a Valuation Important?
-        </h2>
-        <p className="mt-2 text-ink/60 text-sm">
-          Situations When a Home Valuation May Be Necessary
-        </p>
-
+        <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">Why Is a Valuation Important?</h2>
+        <p className="mt-2 text-ink/60 text-sm">Situations When a Home Valuation May Be Necessary</p>
         <div className="mt-12 grid gap-0 lg:grid-cols-2 relative">
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-line" />
-
           {[
-            {
-              side: "right",
-              eyebrow: "Refinancing",
-              text: "Lenders base the amount of their loans on the value of your property and usually allow you to borrow a maximum of 75% to 96.5% against your property. Knowing what your home is worth allows lenders to calculate your equity in the home. The more equity you have, the better terms you will receive on your refinance.",
-            },
-            {
-              side: "left",
-              eyebrow: "Home Improvements",
-              text: "If you're doing home improvement projects to increase the resale value, you want to make sure you're not pricing it out of the market. When you get a valuation, you can see how your home compares with others in the neighborhood and let this guide your home improvement decisions.",
-            },
-            {
-              side: "right",
-              eyebrow: "Qualifying for Credit",
-              text: "If you want to borrow cash against your home, getting a Home Equity Line of Credit (HELOC) could be a good option. To qualify, you must have a certain level of equity in your home. Most lenders require at least 20%. Getting a home valuation will help you determine if you qualify and will be used by the lender to make a decision on your loan.",
-            },
-            {
-              side: "left",
-              eyebrow: "Planning",
-              text: "Though it's not a necessity, simply knowing the value of your home is good information to have. It will help you plan for the future and deal with unforeseen circumstances when you might be in a position that requires extra money or a quick relocation.",
-            },
+            { eyebrow: "Refinancing", text: "Lenders base the amount of their loans on the value of your property and usually allow you to borrow a maximum of 75% to 96.5% against your property. Knowing what your home is worth allows lenders to calculate your equity in the home. The more equity you have, the better terms you will receive on your refinance." },
+            { eyebrow: "Home Improvements", text: "If you're doing home improvement projects to increase the resale value, you want to make sure you're not pricing it out of the market. When you get a valuation, you can see how your home compares with others in the neighborhood and let this guide your home improvement decisions." },
+            { eyebrow: "Qualifying for Credit", text: "If you want to borrow cash against your home, getting a Home Equity Line of Credit (HELOC) could be a good option. To qualify, you must have a certain level of equity in your home. Most lenders require at least 20%. Getting a home valuation will help you determine if you qualify." },
+            { eyebrow: "Planning", text: "Though it's not a necessity, simply knowing the value of your home is good information to have. It will help you plan for the future and deal with unforeseen circumstances when you might be in a position that requires extra money or a quick relocation." },
           ].map((item) => (
-            <div
-              key={item.eyebrow}
-              className={`py-10 border-t hairline first:border-t-0 ${
-                item.side === "right"
-                  ? "lg:pl-16 lg:col-start-2"
-                  : "lg:pr-16 lg:col-start-1"
-              }`}
-            >
+            <div key={item.eyebrow} className="py-10 border-t hairline first:border-t-0">
               <p className="eyebrow text-coral">{item.eyebrow}</p>
-              <p className="mt-3 text-ink/70 text-sm leading-relaxed">
-                {item.text}
-              </p>
+              <p className="mt-3 text-ink/70 text-sm leading-relaxed">{item.text}</p>
             </div>
           ))}
         </div>

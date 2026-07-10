@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand tokens pulled from Yordana's actual design (logo + PDF) */
   --ink: #1a1a1a;
   --paper: #ffffff;
   --coral: #ff4c4c;
@@ -27,9 +26,7 @@ body {
   font-family: var(--font-sans);
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
+.font-display { font-family: var(--font-display); }
 
 .eyebrow {
   font-family: var(--font-sans);
@@ -39,6 +36,4 @@ body {
   font-weight: 600;
 }
 
-.hairline {
-  border-color: var(--line);
-}
+.hairline { border-color: var(--line); }
