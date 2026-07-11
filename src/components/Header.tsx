@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const LEFT = [{ label: "Areas", href: "/areas" }, { label: "Home Search", href: "/home-search" }];
-const RIGHT = [{ label: "Home Valuation", href: "/valuation" }, { label: "Let's Connect", href: "/contact" }];
+const RIGHT = [{ label: "Home Valuation", href: "/valuation" }, { label: "Blog", href: "/blog" }, { label: "Let's Connect", href: "/contact" }];
 
 export default function Header() {
   const [open, setOpen] = useState(false);

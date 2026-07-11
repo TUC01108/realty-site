@@ -4,6 +4,7 @@ import AboutTeaser from "@/components/AboutTeaser";
 import WelcomeVideo from "@/components/WelcomeVideo";
 import BrandBanner from "@/components/BrandBanner";
 import Neighborhoods from "@/components/Neighborhoods";
+import BlogTeaser from "@/components/BlogTeaser";
 import ContactCTA from "@/components/ContactCTA";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WelcomeVideo />
       <BrandBanner />
       <Neighborhoods />
+      <BlogTeaser />
       <ContactCTA />
     </>
   );
