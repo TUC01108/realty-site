@@ -47,11 +47,15 @@ export default function ValuationPage() {
         </div>
       </section>
 
-      {/* ── ADDRESS BAR — coral banner, no background image ── */}
-      <section className="mt-6 lg:mt-8 bg-coral">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8 py-10">
-          <form onSubmit={handleAddressSubmit} className="flex items-stretch gap-0 bg-paper rounded-sm overflow-hidden max-w-3xl mx-auto shadow-md">
-            <div className="flex items-center pl-4 text-ink/40">
+      {/* ── ADDRESS BAR — clean contained design ── */}
+      <section className="bg-sand mt-6 lg:mt-8 py-12 lg:py-14">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <p className="eyebrow text-coral text-center mb-6">Enter Your Address to Get Started</p>
+          <form
+            onSubmit={handleAddressSubmit}
+            className="flex items-stretch max-w-2xl mx-auto border border-coral rounded-sm overflow-hidden"
+          >
+            <div className="flex items-center pl-4 text-coral/60 shrink-0">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
               </svg>
@@ -63,8 +67,11 @@ export default function ValuationPage() {
               placeholder="Enter your home address…"
               className="flex-1 px-3 py-4 text-sm text-ink bg-transparent placeholder:text-ink/40 focus:outline-none"
             />
-            <button type="submit" className="bg-coral text-paper px-6 py-4 text-xs font-medium eyebrow hover:bg-coral-dark transition-colors shrink-0 border-l border-paper/20">
-              Get a Free Home Valuation
+            <button
+              type="submit"
+              className="bg-coral text-paper px-6 py-4 text-xs font-medium eyebrow hover:bg-coral-dark transition-colors shrink-0"
+            >
+              Get Free Valuation
             </button>
           </form>
         </div>
