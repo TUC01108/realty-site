@@ -1,4 +1,17 @@
 import ContactCTA from "@/components/ContactCTA";
+import BlogTeaser from "@/components/BlogTeaser";
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Contact Yordana | Your Big Island Real Estate" };
-export default function ContactPage() { return <ContactCTA />; }
+
+export const metadata: Metadata = {
+  title: "Contact Yordana | Your Big Island Real Estate",
+  description: "Reach out to Yordana Bolanos Salas, your trusted Hawai'i Island real estate advisor. Coldwell Banker Island Properties.",
+};
+
+export default function ContactPage() {
+  return (
+    <>
+      <ContactCTA />
+      <BlogTeaser />
+    </>
+  );
+}
