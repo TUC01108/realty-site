@@ -15,16 +15,21 @@ const REVIEWS = [
   { quote: "5 Stars — Yordana is incredibly professional, thorough, and kept me informed every single step of the way with excellent communication. She made the entire process seamless and stress-free. Highly recommended to anyone looking to buy or sell!", name: "Kiko White" },
 ];
 
-const INTERVAL = 5000;
+// Reading time: ~200 words/min, minimum 4s, maximum 12s
+function readingMs(quote: string): number {
+  const words = quote.trim().split(/\s+/).length;
+  return Math.min(12000, Math.max(4000, Math.round((words / 200) * 60000)));
+}
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
   const next = useCallback(() => setCurrent(c => (c + 1) % REVIEWS.length), []);
 
   useEffect(() => {
-    const id = setInterval(next, INTERVAL);
-    return () => clearInterval(id);
-  }, [next]);
+    const ms = readingMs(REVIEWS[current].quote);
+    const id = setTimeout(next, ms);
+    return () => clearTimeout(id);
+  }, [current, next]);
 
   const review = REVIEWS[current];
 
@@ -36,7 +41,6 @@ export default function Testimonials() {
         </p>
         <p className="mt-6 eyebrow text-paper/80 tracking-widest">{review.name}</p>
       </div>
-      {/* Dot indicators only — no buttons */}
       <div className="flex justify-center gap-2 mt-8">
         {REVIEWS.map((_, i) => (
           <button
