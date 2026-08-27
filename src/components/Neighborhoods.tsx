@@ -8,8 +8,7 @@ export default function Neighborhoods() {
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <h2 className="font-display text-coral text-3xl lg:text-4xl">Explore Life Across the Big Island</h2>
         <p className="mt-3 text-ink/65 max-w-2xl text-sm leading-relaxed">
-          Nine districts. Click through for water, lava context, and who it actually fits — not a
-          brochure.
+          Nine districts of Hawaiʻi Island. Open a page for daily life, water, and lava context.
         </p>
       </div>
       <div className="mt-10 flex flex-col">

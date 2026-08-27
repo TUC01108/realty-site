@@ -93,7 +93,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-display text-coral text-2xl">Notes</p>
+            <p className="font-display text-coral text-2xl">Guides</p>
             <ul className="mt-4 grid gap-2 text-sm">
               {GUIDES.map((g) => (
                 <li key={g.slug}>

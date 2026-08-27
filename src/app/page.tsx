@@ -10,7 +10,7 @@ import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Yordana Bolanos Salas | Hilo & Big Island Real Estate",
+    absolute: brand.documentTitle,
   },
   description: brand.description,
   alternates: { canonical: "/" },

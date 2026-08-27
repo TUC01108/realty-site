@@ -54,7 +54,7 @@ export default function LavaInsurancePage() {
         ]}
       >
         <p>
-          Lava-flow hazard and insurance bindability are two different files. I keep them apart on
+          Lava-flow hazard and insurance bindability are two different questions. I keep them apart on
           purpose. A USGS zone is not a quote. A quote is not a geologic forecast. I will not tell you
           a listing is uninsurable, and I will not tell you a zone is “safe.”
         </p>
@@ -101,11 +101,10 @@ export default function LavaInsurancePage() {
           can pull, and eligibility is not automatic because a listing is in a certain zone.
         </p>
         <p>
-          If lava, hurricane, or flood is material to whether you can live with the house, we put a
-          licensed insurance producer on the file before you are emotionally committed to the lanai.
-          HID’s lava-flow page is the starting point I send people to — not a blog, and not me
-          pretending to be an underwriter. This page is not legal advice and not an insurance
-          recommendation.
+          If lava, hurricane, or flood is material to whether you can live with the house, we speak with a
+          licensed insurance producer before you are emotionally committed to the lanai.
+          HID’s lava-flow page is the starting point I send people to. I am not an underwriter. This page
+          is not legal advice and not an insurance recommendation.
         </p>
       </GuideArticle>
     </>

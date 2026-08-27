@@ -17,8 +17,8 @@ export default function BuySellConnect() {
         </div>
       </div>
       <p className="text-ink/70 max-w-xl mb-10">
-        From Hilo: I would rather walk the file — water, insurance, lava zone as a neighborhood fact
-        — than dress a listing up as a dream.
+        From Hilo, I help people buy and sell homes on Hawaiʻi Island — with care for water,
+        insurance, and how you will live in the district.
       </p>
       <div className="grid gap-1 sm:grid-cols-3">
         {CARDS.map(card => (

@@ -28,7 +28,7 @@ export default function ContactCTA() {
       <div className="mx-auto max-w-6xl px-6 lg:px-8 py-20 lg:py-28 grid gap-12 lg:grid-cols-2">
         <div>
           <p className="eyebrow text-paper/80">Let&apos;s Connect</p>
-          <h2 className="font-display text-3xl lg:text-4xl mt-3">Aloha! Let&apos;s start your Hawai&apos;i real estate journey</h2>
+          <h2 className="font-display text-3xl lg:text-4xl mt-3">Start Your Hawaiʻi Home Journey</h2>
           <p className="mt-5 text-paper/85 max-w-md">Whether you&apos;re buying, selling, or just curious about the market, reach out and Yordana will follow up personally.</p>
         </div>
         <div>

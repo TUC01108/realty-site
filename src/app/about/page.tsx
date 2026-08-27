@@ -42,8 +42,8 @@ export default function AboutPage() {
             <p className="mt-1 text-sm text-ink/70">Languages: {brand.languages}</p>
             <p className="mt-6 text-ink/80 leading-relaxed">
               I am Yordana Bolanos Salas. I work from 101 Hualalai Street in Hilo, with Coldwell Banker
-              Island Properties. If you found a Coldwell Banker page first, this is the same person — and
-              this site is where I keep the record of how I actually work on Hawaiʻi Island.
+              Island Properties. If you found a Coldwell Banker page first, this is the same person. I
+              buy and sell homes across Hawaiʻi Island.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -71,23 +71,22 @@ export default function AboutPage() {
           I spent more than 17 years in strategic sales, high-level negotiations, and international
           market development before I practiced real estate here. That work included building markets
           and leading market-entry work in Mexico and Australia — networks, agreements, and the long
-          game, not a pitch deck.
+          game.
         </p>
         <p>
           In Venezuela I served as Coordinator of the Department of Culture and represented the country
           in international forums and high-level meetings alongside heads of state and senior officials.
           That is protocol, discretion, and cultural intelligence. It is also why I do not confuse a
-          warm conversation with a clean file.
+          warm conversation with a ready next step.
         </p>
         <p>
           I have lived and worked internationally. I know what it is to relocate — to land in a new
           country with a family and a language and a set of assumptions that will not survive the first
-          month. I speak English, Spanish, and Portuguese because that is how I live, not because a
-          website needed a badge.
+          month. I speak English, Spanish, and Portuguese because that is how I live.
         </p>
         <p>
           On island I am a hula mom. I paddle. I paint. I practice Taoism. We spend time with family in
-          nature. That is the life I am actually in while I walk listings in Hilo, Puna, Kona, and the
+          nature. That is the life I am in while I walk listings in Hilo, Puna, Kona, and the
           districts between.
         </p>
         <p>
@@ -101,12 +100,11 @@ export default function AboutPage() {
       <WelcomeVideo />
 
       <section className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-20">
-        <p className="eyebrow text-coral">On this site</p>
-        <h2 className="font-display text-3xl mt-2">Districts and answers I will actually stand behind</h2>
+        <p className="eyebrow text-coral">Hawaiʻi Island</p>
+        <h2 className="font-display text-3xl mt-2">The nine districts, and a few answers from Hilo</h2>
         <p className="mt-4 text-ink/70 max-w-2xl leading-relaxed">
-          The nine judicial districts are not a brochure rack. Each page is what it is like to live
-          there — water, lava context, who it fits — and when I do not have a verified fact, I say
-          less.
+          Each of the nine judicial districts has a page on living there — water, lava context, and
+          daily life.
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 text-sm">
           {NEIGHBORHOODS.map((n) => (

@@ -45,7 +45,7 @@ export default function ValuationPage() {
         <div className="relative text-center text-paper px-6">
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide">How Much Is Your Home Worth?</h1>
           <p className="mt-3 text-sm sm:text-base text-paper/85">
-            Instant property valuation&nbsp;&nbsp;|&nbsp;&nbsp;Trusted guidance&nbsp;&nbsp;|&nbsp;&nbsp;Maximize Value
+            A conversation from Hilo — not an automated estimate
           </p>
         </div>
       </section>
@@ -83,9 +83,12 @@ export default function ValuationPage() {
       {/* ── FORM ── */}
       <section ref={formRef} className="bg-sand py-16 lg:py-20">
         <div className="mx-auto max-w-xl px-6 lg:px-8">
-          <p className="eyebrow text-ink/60">Free Home Valuation</p>
-          <h2 className="font-display text-2xl lg:text-3xl mt-2">Get Your Instant Home Valuation</h2>
-          <p className="text-ink/60 mt-2 text-sm">Enter your details to see how much your home is worth.</p>
+          <p className="eyebrow text-ink/60">Home valuation</p>
+          <h2 className="font-display text-2xl lg:text-3xl mt-2">Request a home valuation</h2>
+          <p className="text-ink/60 mt-2 text-sm">
+            There is no instant calculator on this page. Send the form and Yordana will follow up from Hilo
+            with a valuation conversation.
+          </p>
 
           {state === "success" ? (
             <div className="mt-10 rounded-sm bg-coral/10 border border-coral/30 p-8">
@@ -147,10 +150,10 @@ export default function ValuationPage() {
                 <p className="text-sm text-red-600">Something went wrong — please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>
               )}
               <button type="submit" disabled={state==="submitting"} className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark disabled:opacity-60 transition-colors uppercase tracking-widest">
-                {state==="submitting" ? "Submitting…" : "Unlock Your Free Valuation"}
+                {state==="submitting" ? "Submitting…" : "Request a valuation"}
               </button>
               <div className="flex flex-wrap gap-6 text-xs text-ink/50">
-                {["Instant result","Sell for more","Get expert advice"].map(item => (
+                {["Yordana follows up", "Local comparable sales", "Advice from Hilo"].map(item => (
                   <span key={item} className="flex items-center gap-1.5"><span className="text-coral">✓</span> {item}</span>
                 ))}
               </div>
@@ -164,7 +167,11 @@ export default function ValuationPage() {
         <div>
           <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">What&apos;s Your Property Worth?</h2>
           <p className="mt-6 text-ink/70 leading-relaxed">Home valuations give you valuable knowledge that can help you plan for the future and make smart decisions. It&apos;s good practice to stay informed about how much equity you have in your home and how much you may be able to borrow against it or sell it for.</p>
-          <p className="mt-4 text-ink/70 leading-relaxed">Our tool provides a more robust, accurate assessment than you&apos;ll get from the major real estate portals. For the most precise valuation, reach out to discuss a customized Comparative Market Analysis or an appraisal.</p>
+          <p className="mt-4 text-ink/70 leading-relaxed">
+            This site does not run an automated valuation. For a number you can plan around, Yordana
+            will talk through a Comparative Market Analysis. An appraisal is a separate professional
+            opinion, usually ordered by a lender.
+          </p>
         </div>
         <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
           <Image src="/images/valuation-pool.png" alt="Luxury Hawai'i property with pool" fill className="object-cover" />

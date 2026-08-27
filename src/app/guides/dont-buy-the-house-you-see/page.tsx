@@ -59,8 +59,8 @@ export default function DontBuyTheHousePage() {
         <p>
           DWS is 23 separate systems, not one island pipe. A main in the road does not guarantee a
           meter on your TMK. Catchment is owner-maintained; DWS does not recognize or regulate it; DOH
-          does not certify a home tank as potable. Dual catchment and a meter is a backflow problem,
-          not a clever redundancy. We verify with DWS against the TMK. I wrote that out here:{" "}
+          does not certify a home tank as potable. Dual catchment and a meter is a backflow problem —
+          not something you add later without DWS. We verify with DWS against the TMK. I wrote that out here:{" "}
           <a href="/guides/county-water-vs-rainwater-catchment" className="text-coral border-b border-coral">
             county water vs catchment
           </a>
@@ -86,7 +86,7 @@ export default function DontBuyTheHousePage() {
           mile around Zone 1). I use the map at neighborhood scale. I do not pretend a GIS click is a
           surveyor.
         </p>
-        <h2 className="font-display text-2xl text-coral mt-4">Overnight rental is not a listing caption</h2>
+        <h2 className="font-display text-2xl text-coral mt-4">Overnight rental is a Planning question</h2>
         <p>
           Hawaiʻi County is not Honolulu and it is not Maui. The ordinance does not name Puna, Hilo, or
           A-1a. I will not tell you a lot is a legal STVR because of the neighborhood on the MLS. I wrote

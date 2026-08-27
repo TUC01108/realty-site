@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!area) return {}
   return {
     title: `${area.name}, Hawaiʻi Island — living here`,
-    description: `${area.lede} Notes from ${brand.agentName}, ${brand.license}, Hilo.`,
+    description: `${area.lede} From ${brand.agentName}, ${brand.license}, Hilo.`,
     alternates: { canonical: `/areas/${area.slug}` },
   }
 }
@@ -47,9 +47,8 @@ export default async function AreaPage({ params }: Props) {
             <p key={p.slice(0, 40)}>{p}</p>
           ))}
           <p className="text-sm text-ink/55">
-            I am {brand.agentName}, {brand.license}. This is district-level orientation, not a
-            parcel report. If a fact is not on the public record I can stand behind, I leave it off
-            the page.
+            I am {brand.agentName}, {brand.license}. This is district-level orientation from Hilo, not a
+            parcel report.
           </p>
         </div>
         <aside className="flex flex-col gap-8">
@@ -68,7 +67,7 @@ export default async function AreaPage({ params }: Props) {
             <p className="mt-3 text-sm text-ink/70 leading-relaxed">{area.whoItFits}</p>
           </div>
           <Link href="/guides" className="text-sm font-medium text-coral border-b border-coral pb-0.5 self-start hover:text-coral-dark">
-            Water, lava, and the file you cannot see
+            Guides on water, lava, and insurance
           </Link>
         </aside>
       </section>
@@ -90,7 +89,7 @@ export default async function AreaPage({ params }: Props) {
         <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div>
             <p className="eyebrow text-paper/80">Considering {area.name}?</p>
-            <h2 className="font-display text-3xl lg:text-4xl mt-2">Tell me how you actually live. Then we look at listings.</h2>
+            <h2 className="font-display text-3xl lg:text-4xl mt-2">Tell me how you live. Then we look at listings.</h2>
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">
             <Link href="/home-search" className="rounded-sm bg-paper px-6 py-3 text-sm font-medium text-coral hover:bg-transparent hover:text-paper border border-paper transition-colors">
