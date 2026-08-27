@@ -20,9 +20,8 @@ export default function AreasPage() {
             Nine districts. Nine ways to live here.
           </h1>
           <p className="mt-6 text-ink/70 max-w-xl leading-relaxed">
-            I will not flatten this island into a climate slogan. Water, rain, drive time, and lava
-            context change by district — sometimes by neighborhood. These pages say what I can stand
-            behind. If I cannot verify it, it is not here.
+            Water, rain, drive time, and lava context change by district — sometimes by neighborhood. I
+            work from Hilo. These pages are how I talk about living in each place.
           </p>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { GUIDES } from "@/data/guides"
 export const metadata: Metadata = {
   title: "Hawaiʻi Island answers: water, lava, insurance",
   description:
-    "Sourced notes from Yordana Bolanos Salas, RS-88323, Hilo: county water vs catchment, lava-flow hazard zones and insurance, and what a listing photo will not tell you.",
+    "From Yordana Bolanos Salas, RS-88323, Hilo: county water vs catchment, lava-flow hazard zones and insurance, and what a listing photo will not tell you.",
   alternates: { canonical: "/guides" },
 }
 
@@ -14,13 +14,13 @@ export default function GuidesIndex() {
     <>
       <section className="bg-sand py-16 lg:py-20">
         <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <p className="eyebrow text-coral">Notes you can quote</p>
+          <p className="eyebrow text-coral">From Hilo</p>
           <h1 className="font-display text-coral text-4xl sm:text-5xl mt-3">
             What I tell people before they write an offer on Hawaiʻi Island
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed">
-            These are first-person pages with sources. They are not legal advice, not an insurance
-            quote, and not a promise about any TMK. If I am unsure, I under-claim.
+            These pages have sources. They are not legal advice, not an insurance quote, and not a
+            promise about any TMK.
           </p>
         </div>
       </section>
@@ -38,7 +38,7 @@ export default function GuidesIndex() {
               href={`/guides/${g.slug}`}
               className="mt-4 inline-block text-sm font-medium text-coral border-b border-coral pb-0.5 hover:text-coral-dark"
             >
-              Read the note
+              Read the guide
             </Link>
           </article>
         ))}

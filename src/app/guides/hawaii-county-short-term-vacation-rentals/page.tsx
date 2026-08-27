@@ -49,9 +49,9 @@ export default function StvrPage() {
           apply even if zoning would otherwise allow the use.
         </p>
         <p>
-          This is first-person orientation from a Realtor, not legal advice, and not a map of how to
+          This is orientation from a Realtor, not legal advice, and not a map of how to
           operate. Hawaiʻi County Code Chapter 25 (the compilation I am working from was updated 5 August
-          2026), Ordinance 2018-114 (Bill 108), and Planning Department Rule 23 are the file. Planning
+          2026), Ordinance 2018-114 (Bill 108), and Planning Department Rule 23 are the sources I use. Planning
           wins on a specific TMK: East Hawaiʻi 808-961-8288, West Hawaiʻi 808-323-4770.
         </p>
 
@@ -87,18 +87,18 @@ export default function StvrPage() {
           Annual renewal is $250. Late renewal is forfeiture. The code does not say a NUC transfers on
           sale. A new owner notifies the director; the registration continues subject to termination by
           the new owner. Display a current NUC. “Grandfathered” without a current, displayed certificate
-          is a story, not a file.
+          is not enough.
         </p>
         <p>
-          On State Land Use Agricultural District lots, Rule 23-3 is the limit I will actually say:
+          On State Land Use Agricultural District lots, Rule 23-3 is the limit I will name:
           the NUC path was for State Ag single-family lots existing before 4 June 1976. A dwelling
-          operated as an STVR on a lot created on or after that date in State Ag cannot register. I am
-          not going to workshop how to get around that.
+          operated as an STVR on a lot created on or after that date in State Ag cannot register. I will
+          not help anyone work around that.
         </p>
 
         <h2 className="font-display text-2xl text-coral mt-4">What I will not tell you</h2>
         <ul className="list-disc pl-5 grid gap-2">
-          <li>That a vacation rental is legal because of a neighborhood name, Hawaiian Paradise Park, A-1a, or the MLS caption.</li>
+          <li>That a vacation rental is legal because of a neighborhood name, Hawaiian Paradise Park, A-1a, or the listing remarks.</li>
           <li>That you can put a new STVR on Agriculture, or that Puna is a permitted-STVR district by name.</li>
           <li>That a NUC “conveys” with the house like a water meter.</li>
           <li>That hosted or owner-occupied use is a Chapter 25 STVR.</li>

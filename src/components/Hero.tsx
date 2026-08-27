@@ -22,8 +22,7 @@ export default function Hero() {
           Yordana Bolanos Salas — buying and selling homes on Hawaiʻi Island
         </h1>
         <p className="mt-5 text-ink/70 max-w-2xl leading-relaxed">
-          From Hilo. Meaningful journeys in buying and selling homes — water, insurance, and the
-          district you can actually live in, not a caption.
+          From Hilo. Meaningful journeys in buying and selling homes.
         </p>
         <p className="eyebrow text-ink/70 mt-5">
           Yordana Bolanos Salas &nbsp;|&nbsp; RS-88323 &nbsp;|&nbsp; Coldwell

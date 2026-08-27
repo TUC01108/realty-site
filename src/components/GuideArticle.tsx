@@ -22,7 +22,7 @@ export default function GuideArticle({
             {guide.title}
           </h1>
           <p className="mt-4 text-sm text-ink/50">
-            First-person notes from Yordana Bolanos Salas, RS-88323, Hilo. Not legal, insurance, or engineering advice.
+            From Yordana Bolanos Salas, RS-88323, Hilo. Not legal, insurance, or engineering advice.
           </p>
         </div>
       </header>
@@ -45,7 +45,7 @@ export default function GuideArticle({
             ))}
           </ul>
           <p className="mt-6 text-xs text-ink/50 leading-relaxed">
-            I cite these so you can read the same pages I do. If a number or a rule has moved, the source wins — not this page.
+            I cite these so you can read the same pages I do. If a number or a rule has moved, the source is the authority.
           </p>
         </section>
         {related && related.length > 0 ? (

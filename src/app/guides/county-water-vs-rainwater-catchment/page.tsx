@@ -42,7 +42,7 @@ export default function CountyWaterPage() {
         ]}
       >
         <p>
-          On Hawaiʻi Island I treat water as a file question, not a lifestyle caption. The County of
+          On Hawaiʻi Island, water is something we verify before we talk about lifestyle. The County of
           Hawaiʻi Department of Water Supply is a semi-autonomous agency. It does not run one island-wide
           grid. DWS says its primary function is potable service through{" "}
           <strong>23 individual water systems</strong> distributed around the island. A house in Hilo and
