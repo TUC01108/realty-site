@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BuyerMatchForm from "@/components/BuyerMatchForm";
 
-export const metadata: Metadata = { title: "Home Search | Your Big Island Real Estate" };
+export const metadata: Metadata = { title: "Home Search" };
 
 export default function HomeSearchPage() {
   return (
