@@ -37,6 +37,7 @@ export default function CountyWaterPage() {
         sources={sources}
         related={[
           { href: "/guides/lava-flow-hazard-zones-and-insurance", label: "Lava-flow hazard zones and insurance" },
+          { href: "/guides/hawaii-county-short-term-vacation-rentals", label: "Short-term vacation rentals in Hawaiʻi County" },
           { href: "/guides/dont-buy-the-house-you-see", label: "Don’t buy the house you see" },
         ]}
       >

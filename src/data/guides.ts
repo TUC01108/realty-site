@@ -36,6 +36,14 @@ export const GUIDES: Guide[] = [
       "Photos are the invitation. The file is the house: water, insurance bindability, lava zone at neighborhood scale, and whether overnight rental is even a legal use in Hawaiʻi County.",
     eyebrow: "Due diligence",
   },
+  {
+    slug: "hawaii-county-short-term-vacation-rentals",
+    title: "Short-term vacation rentals in Hawaiʻi County",
+    htmlTitle: "Short-Term Vacation Rentals in Hawaiʻi County",
+    description:
+      "Hawaiʻi County is not Honolulu or Maui. STVR is zoning, registration, and a closed NUC window — not a neighborhood name on the MLS. Notes from Yordana Bolanos Salas, not legal advice.",
+    eyebrow: "STVR",
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {

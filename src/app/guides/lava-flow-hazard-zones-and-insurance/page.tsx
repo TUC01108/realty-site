@@ -49,6 +49,7 @@ export default function LavaInsurancePage() {
         sources={sources}
         related={[
           { href: "/guides/county-water-vs-rainwater-catchment", label: "County water vs rainwater catchment" },
+          { href: "/guides/hawaii-county-short-term-vacation-rentals", label: "Short-term vacation rentals in Hawaiʻi County" },
           { href: "/guides/dont-buy-the-house-you-see", label: "Don’t buy the house you see" },
         ]}
       >
