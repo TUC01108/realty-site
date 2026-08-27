@@ -17,6 +17,10 @@ const sources = [
   { label: "DWS — Rainwater catchment", href: "https://www.hawaiidws.org/catchment/" },
   { label: "USGS HVO — lava-flow hazard FAQs", href: "https://www.usgs.gov/observatories/hvo/frequently-asked-questions-and-answers-about-lava-flow-hazards" },
   { label: "Hawaiʻi DCCA Insurance Division — lava-flow insurance", href: "https://cca.hawaii.gov/ins/lava-flow-insurance-information/" },
+  {
+    label: "County of Hawaiʻi Planning — Short-term vacation rentals (Ord. 2018-114 / Bill 108, Rule 23)",
+    href: "https://www.planning.hawaiicounty.gov/resources/short-term-vacation-rentals",
+  },
 ]
 
 export default function DontBuyTheHousePage() {
@@ -83,24 +87,52 @@ export default function DontBuyTheHousePage() {
         </p>
         <h2 className="font-display text-2xl text-coral mt-4">Overnight rental is not a listing caption</h2>
         <p>
-          Hawaiʻi County is not Honolulu and it is not Maui. I will not tell you there is a “legal
-          STVR” in Puna, in Hawaiian Paradise Park, or on A-1a. I will not tell you Hilo banned
-          short-term rentals and Kona allows them. Those sentences travel well on the internet and they
-          are how people buy the wrong land.
+          Hawaiʻi County is not Honolulu and it is not Maui. The ordinance does not name Puna, Hilo, or
+          A-1a. I will not tell you a lot is a legal STVR because of the neighborhood on the MLS. I will
+          not tell you Hilo banned it and Kona allows it. CC&amp;Rs that ban short-term rental still apply
+          even if zoning would otherwise allow the use.
         </p>
         <p>
-          County short-term rental rules are ordinance, permits, and enforcement — and they change. As
-          of 27 August 2026 I could not retrieve the County ordinance PDFs (the County site was
-          Cloudflare-blocked from the environment I work in). I am not going to invent permitted
-          districts, fees, or NUC transfer rules to fill that gap. If overnight visitor use is why you
-          are buying, we verify with County of Hawaiʻi Planning on the record for that TMK before you
-          write.
+          Hawaiʻi County Code Chapter 25, as implemented by Ordinance 2018-114 (Bill 108) and Planning
+          Department Rule 23, is the file. Chapter 25’s STVR is an <strong>unhosted</strong> dwelling: the
+          owner or operator does not reside on the building site, no more than five bedrooms for rent on
+          that site, rented for thirty consecutive days or less, with a reachable person in Hawaiʻi County
+          (reachable by phone within one hour, able to be on-site within three). That is not a hosted,
+          owner-occupied spare-room product, and I will not treat it as one.
         </p>
         <p>
-          Two more things I will not blur: a State agricultural farm dwelling used for overnight stays
-          is not a holiday-rental product on this island. And SMA — Special Management Area — is a
-          separate coastal development permit. Being “near the ocean” does not tell you whether SMA
-          applies, and SMA is not a vacation-rental license.
+          New STVR is a zoning-district question, not a district-name question. Permitted districts for a
+          new STVR include V, CG, and CV; residential or commercial only where the General Plan maps
+          Resort or Resort Node; RM multifamily in a CPR; RS, RD, and CN only in a General Plan Resort or
+          Resort Node. Agriculture is not a permitted STVR use. A State agricultural farm dwelling used
+          for overnight stays is not a holiday-rental product on this island.
+        </p>
+        <p>
+          Registration is not permission. The one-time registration fee (Planning’s packet still lists
+          $500) never creates zoning permission. Advertising must show a registration or NUC number;
+          advertising is treated as prima facie operation.
+        </p>
+        <p>
+          Nonconforming Use Certificates were a closed door, not a path I can open. NUC was for STVRs
+          operating outside permitted districts before 1 April 2019; Rule 23 required those applications
+          by late September 2019. There are no new NUCs. Annual renewal is $250; late renewal is
+          forfeiture. The code does not say a NUC “transfers” on sale. A new owner notifies the director;
+          the registration continues subject to termination by the new owner. Display a current NUC.
+          “Grandfathered” without a current, displayed certificate is a story, not a file.
+        </p>
+        <p>
+          Rule 23-3 is blunt about State Ag: a dwelling operated as an STVR on a lot created on or after
+          4 June 1976 in the State Land Use Agricultural District is excluded from being registered. I
+          am not going to workshop how to get around that.
+        </p>
+        <p>
+          SMA — Special Management Area — is a separate coastal development permit. Being near the ocean
+          does not tell you whether SMA applies, and SMA is not a vacation-rental license.
+        </p>
+        <p>
+          If overnight visitor use is why you are buying, we verify with County of Hawaiʻi Planning on
+          that TMK before you write — East Hawaiʻi 808-961-8288, West Hawaiʻi 808-323-4770. This is not
+          legal advice, and it is not a map of how to operate. The code changes; Planning wins.
         </p>
         <p>
           If you want the house you saw, we can talk about the house. If you want the income you
