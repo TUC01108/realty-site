@@ -12,7 +12,7 @@ const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"
 export const metadata: Metadata = {
   metadataBase: new URL(brand.siteUrl),
   title: {
-    default: "Yordana Bolanos Salas | Hilo & Big Island Real Estate",
+    default: brand.documentTitle,
     template: "%s | Yordana Bolanos Salas",
   },
   description: brand.description,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: brand.siteUrl,
     siteName: brand.name,
-    title: "Yordana Bolanos Salas | Hilo & Big Island Real Estate",
+    title: brand.documentTitle,
     description: brand.description,
   },
 };

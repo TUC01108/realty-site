@@ -7,6 +7,8 @@ export const brand = {
   tagline: "Meaningful journeys in buying and selling homes.",
   description:
     "Yordana Bolanos Salas, RS-88323, Realtor with Coldwell Banker Island Properties in Hilo — buying and selling homes across Hawaiʻi Island.",
+  documentTitle:
+    "Yordana Bolanos Salas, RS-88323 | Coldwell Banker Island Properties, Hilo",
   agentName: "Yordana Bolanos Salas",
   firstName: "Yordana",
   jobTitle: "Realtor",
