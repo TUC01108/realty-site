@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Your Big Island Real Estate
 
-## Getting Started
+Public site and private agent desk for **Yordana Bolanos Salas** (RS-88323), Coldwell Banker Island Properties, Hilo.
 
-First, run the development server:
+Live: [yourbigislandrealestate.com](https://www.yourbigislandrealestate.com/)
+
+The public pages stay hers — coral, Playfair, nine districts, valuation, contact, blog. What this repo adds is a PIN-gated **`/desk`** so seller and buyer inquiries land in a scored pipeline with Hawaiʻi-specific document checklists. Official HAR contracts stay at the brokerage; the desk prepares the file, it does not replace the forms.
+
+## Public capture
+
+- `/valuation` — seller home-value form (timeline + occupancy + motivation). Saved to the desk, then emailed via Resend when `RESEND_API_KEY` is set.
+- `/home-search` — buyer match form until MLS/IDX is wired.
+- `/contact` — buy or sell, same ingest path.
+- `/areas/[slug]` — the nine districts.
+
+## Agent desk
+
+`/desk/login` — default local PIN `yordana`. Set `DESK_PIN` before this is on the public internet.
+
+Inside: Today (follow-ups, hot files, Cursor GCI vs burn), pipeline, leads, packets, playbook, settings.
+
+On Vercel the JSON store lives at `/tmp/ybi-desk` (ephemeral). Locally it writes `data/store.json`. Sample Big Island files seed an empty store so the desk is usable on first open.
+
+## Run locally
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:43145](http://localhost:43145). Desk: [http://localhost:43145/desk/login](http://localhost:43145/desk/login).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Email confirmations need `RESEND_API_KEY`. Leads still save if email fails.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+This is a Next.js app. Redeploy the existing Vercel project for `yourbigislandrealestate.com`. Add:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `DESK_PIN` — a PIN only Yordana knows
+- `RESEND_API_KEY` — already used for `hello@mail.yourbigislandrealestate.com`

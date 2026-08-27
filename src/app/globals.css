@@ -37,3 +37,7 @@ body {
 }
 
 .hairline { border-color: var(--line); }
+
+@media print {
+  header, nav, button, .print\:hidden { display: none !important; }
+}

@@ -9,11 +9,13 @@ export default function ContactCTA() {
     e.preventDefault();
     setState("submitting");
     const form = e.currentTarget;
+    const fd = new FormData(form);
     const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      message: String(fd.get("message") || ""),
+      interest: String(fd.get("interest") || "buy"),
     };
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
@@ -37,6 +39,16 @@ export default function ContactCTA() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-4">
+              <div className="flex flex-wrap gap-5 text-sm">
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="interest" value="buy" defaultChecked className="accent-paper" />
+                  Buying
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="interest" value="sell" className="accent-paper" />
+                  Selling
+                </label>
+              </div>
               <input required name="name" type="text" placeholder="Full name" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
               <input required name="email" type="email" placeholder="Email" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
               <input required name="phone" type="tel" placeholder="Phone" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />

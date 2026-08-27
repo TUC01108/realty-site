@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
 
 export default function Footer() {
@@ -48,7 +49,12 @@ export default function Footer() {
       <div className="bg-ink text-paper/70">
         <div className="mx-auto max-w-6xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between gap-2 text-xs">
           <p>© {new Date().getFullYear()} Your Big Island Real Estate. All rights reserved.</p>
-          <p>Coldwell Banker Island Properties. Equal Housing Opportunity.</p>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>Coldwell Banker Island Properties. Equal Housing Opportunity.</span>
+            <Link href="/desk/login" className="text-paper/40 hover:text-paper/80">
+              Agent desk
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

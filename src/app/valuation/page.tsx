@@ -25,7 +25,10 @@ export default function ValuationPage() {
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       address,
       propertyType: "Not specified",
-      notes: "",
+      timeline: (form.elements.namedItem("timeline") as HTMLSelectElement).value,
+      occupancy: (form.elements.namedItem("occupancy") as HTMLSelectElement).value,
+      motivation: (form.elements.namedItem("motivation") as HTMLTextAreaElement).value,
+      notes: (form.elements.namedItem("motivation") as HTMLTextAreaElement).value,
     };
     try {
       const res = await fetch("/api/valuation", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
@@ -102,6 +105,31 @@ export default function ValuationPage() {
               <div className="flex flex-col gap-1.5">
                 <label className="eyebrow text-ink/60">Phone *</label>
                 <input required name="phone" type="tel" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" />
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="flex flex-col gap-1.5">
+                  <label className="eyebrow text-ink/60">When would you like to sell?</label>
+                  <select name="timeline" defaultValue="90_days" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors">
+                    <option value="asap">Ready now</option>
+                    <option value="30_days">Within 30 days</option>
+                    <option value="90_days">Within 90 days</option>
+                    <option value="6_months">This year</option>
+                    <option value="browsing">Just looking at value</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="eyebrow text-ink/60">Who lives there now?</label>
+                  <select name="occupancy" defaultValue="unknown" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors">
+                    <option value="owner">I live there</option>
+                    <option value="tenant">Tenants</option>
+                    <option value="vacant">Vacant</option>
+                    <option value="unknown">Not sure</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="eyebrow text-ink/60">What should Yordana know?</label>
+                <textarea name="motivation" rows={3} placeholder="Inherited, relocating, testing the market…" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors placeholder:text-ink/40" />
               </div>
               {address && (
                 <div className="flex flex-col gap-1.5">
