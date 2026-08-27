@@ -9,7 +9,7 @@ import { GUIDES } from "@/data/guides"
 import { NEIGHBORHOODS } from "@/data/neighborhoods"
 
 export const metadata: Metadata = {
-  title: "Meet Yordana Bolanos Salas, RS-88323 | Hilo Realtor",
+  title: { absolute: "Yordana Bolanos Salas, RS-88323 | Meet the Hilo Realtor" },
   description:
     "Yordana Bolanos Salas, RS-88323, Realtor with Coldwell Banker Island Properties at 101 Hualalai Street, Hilo, HI 96720. English, Spanish, and Portuguese.",
   alternates: { canonical: "/about" },
