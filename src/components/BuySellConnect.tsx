@@ -16,7 +16,10 @@ export default function BuySellConnect() {
           Crafting Legacies,<br/>One Home at a Time
         </div>
       </div>
-      <p className="text-ink/70 max-w-xl mb-10">Yordana is more than just an agent — she&apos;s a trusted partner in achieving your real estate dreams.</p>
+      <p className="text-ink/70 max-w-xl mb-10">
+        From Hilo: I would rather walk the file — water, insurance, lava zone as a neighborhood fact
+        — than dress a listing up as a dream.
+      </p>
       <div className="grid gap-1 sm:grid-cols-3">
         {CARDS.map(card => (
           <Link key={card.label} href={card.href} className="group relative aspect-[4/3] flex items-end p-6 overflow-hidden">

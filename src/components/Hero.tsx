@@ -19,11 +19,15 @@ export default function Hero() {
 
       <div className="mx-auto max-w-6xl px-6 lg:px-8 py-16 lg:py-20">
         <h1 className="font-display text-coral text-4xl sm:text-5xl lg:text-6xl leading-[1.15] max-w-3xl">
-          Meaningful Journeys in Buying and Selling Homes
+          Yordana Bolanos Salas — buying and selling homes on Hawaiʻi Island
         </h1>
+        <p className="mt-5 text-ink/70 max-w-2xl leading-relaxed">
+          From Hilo. Meaningful journeys in buying and selling homes — water, insurance, and the
+          district you can actually live in, not a caption.
+        </p>
         <p className="eyebrow text-ink/70 mt-5">
           Yordana Bolanos Salas &nbsp;|&nbsp; RS-88323 &nbsp;|&nbsp; Coldwell
-          Banker Island Properties
+          Banker Island Properties &nbsp;|&nbsp; Hilo
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
