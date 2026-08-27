@@ -6,18 +6,28 @@ export const brand = {
   islandShort: "Big Island",
   tagline: "Meaningful journeys in buying and selling homes.",
   description:
-    "Yordana Bolanos Salas, Coldwell Banker Island Properties — buying and selling homes across Hawaiʻi Island, with a private desk that scores real intent and prepares the file.",
+    "Yordana Bolanos Salas, RS-88323, Realtor with Coldwell Banker Island Properties in Hilo — buying and selling homes across Hawaiʻi Island.",
   agentName: "Yordana Bolanos Salas",
   firstName: "Yordana",
+  jobTitle: "Realtor",
   license: "RS-88323",
   brokerage: "Coldwell Banker Island Properties",
   phone: "808.642.4933",
-  phoneHref: "tel:8086424933",
+  phoneHref: "tel:+18086424933",
   email: "yourbigislandrealestate@gmail.com",
-  addressLine: "101 Hualalai Street, Hilo, Hawaiʻi 96720",
+  streetAddress: "101 Hualalai Street",
+  addressLocality: "Hilo",
+  addressRegion: "HI",
+  postalCode: "96720",
+  addressLine: "101 Hualalai Street, Hilo, HI 96720",
+  addressDisplay: "101 Hualalai Street, Hilo, Hawaiʻi 96720",
   instagram: "https://www.instagram.com/yourbigislandrealestate/",
+  instagramHandle: "@yourbigislandrealestate",
+  cbProfile:
+    "https://www.coldwellbanker.com/hi/hilo/agents/yordana-bolanos-salas/aid-P00200000000039q2zvjC11jFnQiQ3wNS71Nbufd",
   siteUrl: "https://www.yourbigislandrealestate.com",
   languages: "English, Spanish, and Portuguese",
+  languageList: ["English", "Spanish", "Portuguese"] as const,
 }
 
 export const defaultSettings = {
