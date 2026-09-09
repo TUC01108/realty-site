@@ -1,19 +1,13 @@
-// ─── PERSONAL VIDEO CONFIG ───────────────────────────────────────
-// When Yordana's video is ready, paste the YouTube URL here:
+// When Yordana\'s personal video is ready, paste the YouTube URL here:
 const VIDEO_URL = "";
-// ─────────────────────────────────────────────────────────────────
-
 import Image from "next/image";
-
 function toEmbedUrl(url: string): string {
   const short = url.match(/youtu\.be\/([^?&]+)/);
   if (short) return `https://www.youtube.com/embed/${short[1]}?autoplay=1&mute=1&loop=1&playlist=${short[1]}&controls=0&rel=0&playsinline=1`;
   const watch = url.match(/youtube\.com\/watch\?v=([^&]+)/);
   if (watch) return `https://www.youtube.com/embed/${watch[1]}?autoplay=1&mute=1&loop=1&playlist=${watch[1]}&controls=0&rel=0&playsinline=1`;
-  const sep = url.includes("?") ? "&" : "?";
-  return `${url}${sep}autoplay=1&muted=1&loop=1&background=1`;
+  return `${url}${url.includes("?")?"&":"?"}autoplay=1&muted=1&loop=1&background=1`;
 }
-
 export default function WelcomeVideo() {
   const hasVideo = VIDEO_URL.trim().length > 0;
   return (
@@ -22,7 +16,7 @@ export default function WelcomeVideo() {
         <p className="eyebrow text-paper/80 text-center mb-8">A Message from Yordana</p>
         <div className="relative aspect-video w-full rounded-sm overflow-hidden shadow-lg">
           {hasVideo ? (
-            <iframe src={toEmbedUrl(VIDEO_URL)} title="Welcome message from Yordana Bolanos Salas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" className="absolute inset-0 w-full h-full border-0 scale-[1.03]" />
+            <iframe src={toEmbedUrl(VIDEO_URL)} title="Welcome message from Yordana" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" className="absolute inset-0 w-full h-full border-0 scale-[1.03]" />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
               <Image src="/images/headshot.png" alt="Yordana Bolanos Salas" fill className="object-cover" />

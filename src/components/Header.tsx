@@ -2,10 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-const LEFT = [{ label: "Areas", href: "/areas" }, { label: "Home Search", href: "/home-search" }];
-const RIGHT = [{ label: "Home Valuation", href: "/valuation" }, { label: "Let's Connect", href: "/contact" }];
-
+const LEFT = [{ label:"Areas", href:"/areas" },{ label:"Home Search", href:"/home-search" }];
+const RIGHT = [{ label:"Home Valuation", href:"/valuation" },{ label:"Let's Connect", href:"/contact" }];
 export default function Header() {
   const [open, setOpen] = useState(false);
   return (
@@ -21,8 +19,8 @@ export default function Header() {
           <nav className="hidden md:flex items-center justify-start gap-8">
             {RIGHT.map(l => <Link key={l.href} href={l.href} className="eyebrow text-coral hover:text-coral-dark transition-colors">{l.label}</Link>)}
           </nav>
-          <button aria-label="Toggle menu" className="md:hidden absolute right-0 flex flex-col gap-1.5 p-2" onClick={() => setOpen(v => !v)}>
-            <span className="block h-px w-6 bg-ink" /><span className="block h-px w-6 bg-ink" /><span className="block h-px w-6 bg-ink" />
+          <button aria-label="Toggle menu" className="md:hidden absolute right-0 flex flex-col gap-1.5 p-2" onClick={() => setOpen(v=>!v)}>
+            <span className="block h-px w-6 bg-ink"/><span className="block h-px w-6 bg-ink"/><span className="block h-px w-6 bg-ink"/>
           </button>
         </div>
       </div>

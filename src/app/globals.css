@@ -1,39 +1,15 @@
 @import "tailwindcss";
-
 :root {
-  --ink: #1a1a1a;
-  --paper: #ffffff;
-  --coral: #ff4c4c;
-  --coral-dark: #e23e3e;
-  --sand: #f7f4f0;
-  --line: #e8e3dc;
+  --ink: #1a1a1a; --paper: #ffffff; --coral: #ff4c4c;
+  --coral-dark: #e23e3e; --sand: #f7f4f0; --line: #e8e3dc;
 }
-
 @theme inline {
-  --color-ink: var(--ink);
-  --color-paper: var(--paper);
-  --color-coral: var(--coral);
-  --color-coral-dark: var(--coral-dark);
-  --color-sand: var(--sand);
-  --color-line: var(--line);
-  --font-display: var(--font-playfair);
-  --font-sans: var(--font-montserrat);
+  --color-ink: var(--ink); --color-paper: var(--paper);
+  --color-coral: var(--coral); --color-coral-dark: var(--coral-dark);
+  --color-sand: var(--sand); --color-line: var(--line);
+  --font-display: var(--font-playfair); --font-sans: var(--font-montserrat);
 }
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
-}
-
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); }
 .font-display { font-family: var(--font-display); }
-
-.eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
+.eyebrow { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
 .hairline { border-color: var(--line); }
