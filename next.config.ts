@@ -22,12 +22,15 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "upgrade-insecure-requests",
+  // Add upgrade-insecure-requests only when this policy is enforced.
+  // Chrome logs an error and ignores it while the header is report-only.
 ].join("; ");
 
 // Camera, microphone, location, and similar sensors are unused.
 // Accelerometer and gyroscope stay off while the welcome video is a
 // placeholder; the YouTube embed path asks for them once a URL is set.
+// bluetooth=() is omitted because Chrome logs it as an unrecognized
+// feature on every page. The site does not use Bluetooth.
 const permissionsPolicy = [
   "accelerometer=()",
   "camera=()",
@@ -38,7 +41,6 @@ const permissionsPolicy = [
   "microphone=()",
   "payment=()",
   "usb=()",
-  "bluetooth=()",
   "browsing-topics=()",
 ].join(", ");
 
