@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.yourbigislandrealestate.com/valuation" },
   openGraph: {
     title: "Free Home Valuation | Your Big Island Real Estate",
-    description: "Find out what your Hawai'i Island property is worth. Instant valuation, expert advice, and personalized guidance from Yordana Bolanos Salas.",
+    description: "Yordana Bolanos Salas reviews your Hawai'i Island property herself and emails a personal valuation within 24 hours.",
     url: "https://www.yourbigislandrealestate.com/valuation",
   },
 };
