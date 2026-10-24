@@ -1,17 +1,29 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import ListingAlertForm from "@/components/ListingAlertForm";
+
 export const metadata: Metadata = {
-  title: "Search Homes for Sale on the Big Island | Your Big Island Real Estate",
-  description: "Browse homes, condos, and land for sale across Hawai\'i Island. Search by district, price, and property type. Contact Yordana Bolanos Salas to find your perfect Big Island property.",
+  title: "Home Search",
+  description:
+    "Tell me what you're looking for and I'll send you matching listings. Share districts, budget, property type, lava zone, and timeline with Yordana Bolanos Salas.",
   alternates: { canonical: "https://www.yourbigislandrealestate.com/home-search" },
+  openGraph: {
+    title: "Home Search | Your Big Island Real Estate",
+    description: "Tell me what you're looking for and I'll send you matching listings.",
+    url: "https://www.yourbigislandrealestate.com/home-search",
+  },
 };
+
 export default function HomeSearchPage() {
   return (
-    <section className="mx-auto max-w-6xl px-6 lg:px-8 py-24 text-center">
-      <p className="eyebrow text-coral">Coming Soon</p>
-      <h1 className="font-display text-coral text-4xl lg:text-5xl mt-3">Home Search</h1>
-      <p className="mt-6 text-ink/70 max-w-md mx-auto">Live MLS search is coming soon. In the meantime, contact Yordana directly — she&apos;ll find the perfect property for you.</p>
-      <Link href="/contact" className="mt-8 inline-block rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark transition-colors">Contact Yordana</Link>
+    <section className="bg-sand py-16 lg:py-20">
+      <div className="mx-auto max-w-xl px-6 lg:px-8">
+        <p className="eyebrow text-coral">Home Search</p>
+        <h1 className="mt-3 font-display text-4xl text-coral lg:text-5xl">Tell me what you&apos;re looking for</h1>
+        <p className="mt-4 leading-relaxed text-ink/70">
+          I&apos;ll send you matching listings. Live MLS search is not on the site yet, so this request comes straight to me.
+        </p>
+        <ListingAlertForm />
+      </div>
     </section>
   );
 }

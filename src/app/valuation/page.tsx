@@ -1,17 +1,24 @@
 "use client";
 import Image from "next/image";
 import { useState, useRef } from "react";
+import Honeypot from "@/components/Honeypot";
+import { HONEYPOT_FIELD } from "@/lib/leads";
 type FormState = "idle"|"submitting"|"success"|"error";
 export default function ValuationPage() {
   const [address, setAddress] = useState("");
   const [state, setState] = useState<FormState>("idle");
+  const [error, setError] = useState("");
   const formRef = useRef<HTMLDivElement>(null);
   function handleAddressSubmit(e: React.FormEvent) { e.preventDefault(); formRef.current?.scrollIntoView({ behavior:"smooth", block:"start" }); }
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault(); setState("submitting");
+    e.preventDefault(); setState("submitting"); setError("");
     const form = e.currentTarget;
-    const data = { name:(form.elements.namedItem("name") as HTMLInputElement).value, email:(form.elements.namedItem("email") as HTMLInputElement).value, phone:(form.elements.namedItem("phone") as HTMLInputElement).value, address, propertyType:"Not specified", notes:"" };
-    try { const res = await fetch("/api/valuation",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}); setState(res.ok?"success":"error"); }
+    const data = { name:(form.elements.namedItem("name") as HTMLInputElement).value, email:(form.elements.namedItem("email") as HTMLInputElement).value, phone:(form.elements.namedItem("phone") as HTMLInputElement).value, address, propertyType:"Not specified", notes:"", [HONEYPOT_FIELD]:(form.elements.namedItem(HONEYPOT_FIELD) as HTMLInputElement | null)?.value ?? "" };
+    try {
+      const res = await fetch("/api/valuation",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+      if (!res.ok) { const body = await res.json().catch(() => ({})); setError(body.error || ""); setState("error"); return; }
+      setState("success");
+    }
     catch { setState("error"); }
   }
   return (
@@ -21,7 +28,7 @@ export default function ValuationPage() {
         <div className="absolute inset-0 bg-ink/35" />
         <div className="relative text-center text-paper px-6">
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide">How Much Is Your Home Worth?</h1>
-          <p className="mt-3 text-sm sm:text-base text-paper/85">Instant property valuation&nbsp;&nbsp;|&nbsp;&nbsp;Trusted guidance&nbsp;&nbsp;|&nbsp;&nbsp;Maximize Value</p>
+          <p className="mt-3 text-sm sm:text-base text-paper/85">Personal valuation within 24 hours&nbsp;&nbsp;|&nbsp;&nbsp;Trusted guidance&nbsp;&nbsp;|&nbsp;&nbsp;Maximize Value</p>
         </div>
       </section>
       <section className="bg-sand mt-6 lg:mt-8 py-12 lg:py-14">
@@ -37,20 +44,21 @@ export default function ValuationPage() {
       <section ref={formRef} className="bg-sand py-16 lg:py-20 border-t hairline">
         <div className="mx-auto max-w-xl px-6 lg:px-8">
           <p className="eyebrow text-ink/60">Free Home Valuation</p>
-          <h2 className="font-display text-2xl lg:text-3xl mt-2">Get Your Instant Home Valuation</h2>
-          <p className="text-ink/60 mt-2 text-sm">Enter your details to see how much your home is worth.</p>
+          <h2 className="font-display text-2xl lg:text-3xl mt-2">Request Your Personal Home Valuation</h2>
+          <p className="text-ink/60 mt-2 text-sm">Share your details and Yordana will email you a personal valuation within 24 hours.</p>
           {state==="success" ? (
-            <div className="mt-10 rounded-sm bg-coral/10 border border-coral/30 p-8"><p className="font-display text-2xl text-coral">Thank you!</p><p className="mt-2 text-ink/70">Yordana will be in touch within 24 hours with your home valuation.</p></div>
+            <div className="mt-10 rounded-sm bg-coral/10 border border-coral/30 p-8"><p className="font-display text-2xl text-coral">Thank you!</p><p className="mt-2 text-ink/70">Yordana will review your home herself and email you a personal valuation within 24 hours. A short confirmation is on its way to your inbox.</p></div>
           ) : (
-            <form onSubmit={handleFormSubmit} className="mt-8 grid gap-6">
+            <form onSubmit={handleFormSubmit} className="relative mt-8 grid gap-6">
+              <Honeypot />
               <div className="flex flex-col gap-1.5"><label className="eyebrow text-ink/60">Full Name *</label><input required name="name" type="text" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" /></div>
               <div className="flex flex-col gap-1.5"><label className="eyebrow text-ink/60">Email *</label><input required name="email" type="email" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" /></div>
               <div className="flex flex-col gap-1.5"><label className="eyebrow text-ink/60">Phone *</label><input required name="phone" type="tel" className="border-b border-ink/30 bg-transparent pb-2 text-sm focus:outline-none focus:border-coral transition-colors" /></div>
               {address && (<div className="flex flex-col gap-1.5"><label className="eyebrow text-ink/60">Property Address</label><p className="border-b border-ink/20 pb-2 text-sm text-ink/70">{address}</p></div>)}
               <div className="flex items-start gap-3"><input required type="checkbox" name="consent" id="consent" className="mt-1 accent-coral" /><label htmlFor="consent" className="text-xs text-ink/50 leading-relaxed">I agree to be contacted by Yordana Bolanos Salas via call, email, and text for real estate services. To opt out, reply &lsquo;stop&rsquo; at any time.</label></div>
-              {state==="error" && <p className="text-sm text-red-600">Something went wrong — please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>}
-              <button type="submit" disabled={state==="submitting"} className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark disabled:opacity-60 transition-colors uppercase tracking-widest">{state==="submitting"?"Submitting…":"Unlock Your Free Valuation"}</button>
-              <div className="flex flex-wrap gap-6 text-xs text-ink/50">{["Instant result","Sell for more","Get expert advice"].map(item => (<span key={item} className="flex items-center gap-1.5"><span className="text-coral">✓</span> {item}</span>))}</div>
+              {state==="error" && <p className="text-sm text-red-600">{error || "Something went wrong."} Please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>}
+              <button type="submit" disabled={state==="submitting"} className="rounded-sm bg-coral px-6 py-3 text-sm font-medium text-paper hover:bg-coral-dark disabled:opacity-60 transition-colors uppercase tracking-widest">{state==="submitting"?"Submitting…":"Request My Valuation"}</button>
+              <div className="flex flex-wrap gap-6 text-xs text-ink/50">{["Reply within 24 hours","Sell for more","Get expert advice"].map(item => (<span key={item} className="flex items-center gap-1.5"><span className="text-coral">✓</span> {item}</span>))}</div>
             </form>
           )}
         </div>
@@ -59,7 +67,7 @@ export default function ValuationPage() {
         <div>
           <h2 className="font-display text-coral text-3xl lg:text-5xl leading-tight">What&apos;s Your Property Worth?</h2>
           <p className="mt-6 text-ink/70 leading-relaxed">Home valuations give you valuable knowledge that can help you plan for the future and make smart decisions. It&apos;s good practice to stay informed about how much equity you have in your home and how much you may be able to borrow against it or sell it for.</p>
-          <p className="mt-4 text-ink/70 leading-relaxed">Our tool provides a more robust, accurate assessment than you&apos;ll get from the major real estate portals. For the most precise valuation, reach out to discuss a customized Comparative Market Analysis or an appraisal.</p>
+          <p className="mt-4 text-ink/70 leading-relaxed">This page does not show an instant number. Yordana reviews your property herself and emails you a personal valuation within 24 hours. If you want the most precise figure, she can prepare a Comparative Market Analysis or refer you to an appraiser.</p>
         </div>
         <div className="relative aspect-[4/3] rounded-sm overflow-hidden"><Image src="/images/valuation-pool.png" alt="Luxury Hawai'i property with pool" fill className="object-cover" /></div>
       </section>

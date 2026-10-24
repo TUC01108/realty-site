@@ -6,11 +6,16 @@ import type { NextConfig } from "next";
 // 'unsafe-inline' covers Next.js bootstrap scripts (self.__next_f) and
 // style attributes from React / next/image. Nonces would force every page
 // to render dynamically and drop the static cache this site uses today.
+//
+// Vercel Web Analytics loads its debug script from va.vercel-scripts.com
+// during local development. Production loads /_vercel/insights/script.js
+// from this site and posts page views to /_vercel/insights/*, which
+// connect-src 'self' already allows.
 const isDev = process.env.NODE_ENV === "development";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' blob: data: https://blogger.googleusercontent.com",
   "font-src 'self'",

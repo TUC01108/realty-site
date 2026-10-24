@@ -1,13 +1,20 @@
 "use client";
 import { useState } from "react";
+import Honeypot from "@/components/Honeypot";
+import { HONEYPOT_FIELD } from "@/lib/leads";
 type FormState = "idle"|"submitting"|"success"|"error";
 export default function ContactCTA() {
   const [state, setState] = useState<FormState>("idle");
+  const [error, setError] = useState("");
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault(); setState("submitting");
+    e.preventDefault(); setState("submitting"); setError("");
     const form = e.currentTarget;
-    const data = { name:(form.elements.namedItem("name") as HTMLInputElement).value, email:(form.elements.namedItem("email") as HTMLInputElement).value, phone:(form.elements.namedItem("phone") as HTMLInputElement).value, message:(form.elements.namedItem("message") as HTMLTextAreaElement).value };
-    try { const res = await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}); setState(res.ok?"success":"error"); }
+    const data = { name:(form.elements.namedItem("name") as HTMLInputElement).value, email:(form.elements.namedItem("email") as HTMLInputElement).value, phone:(form.elements.namedItem("phone") as HTMLInputElement).value, message:(form.elements.namedItem("message") as HTMLTextAreaElement).value, [HONEYPOT_FIELD]:(form.elements.namedItem(HONEYPOT_FIELD) as HTMLInputElement | null)?.value ?? "" };
+    try {
+      const res = await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+      if (!res.ok) { const body = await res.json().catch(() => ({})); setError(body.error || ""); setState("error"); return; }
+      setState("success");
+    }
     catch { setState("error"); }
   }
   return (
@@ -22,12 +29,13 @@ export default function ContactCTA() {
           {state==="success" ? (
             <div className="rounded-sm bg-paper/10 border border-paper/30 p-8"><p className="font-display text-2xl">Mahalo!</p><p className="mt-2 text-paper/85">Yordana will be in touch shortly. Check your inbox for a confirmation email.</p></div>
           ) : (
-            <form onSubmit={handleSubmit} className="grid gap-4">
+            <form onSubmit={handleSubmit} className="relative grid gap-4">
+              <Honeypot />
               <input required name="name" type="text" placeholder="Full name" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
               <input required name="email" type="email" placeholder="Email" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
               <input required name="phone" type="tel" placeholder="Phone" className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
               <textarea name="message" placeholder="Tell us about your goals — buying, selling, timeline…" rows={4} className="rounded-sm bg-paper/10 border border-paper/30 px-4 py-3 text-sm placeholder:text-paper/60 focus:outline-none focus:border-paper transition-colors" />
-              {state==="error" && <p className="text-sm text-paper/80">Something went wrong — please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>}
+              {state==="error" && <p className="text-sm text-paper/80">{error || "Something went wrong."} Please email <a href="mailto:yourbigislandrealestate@gmail.com" className="underline">yourbigislandrealestate@gmail.com</a></p>}
               <button type="submit" disabled={state==="submitting"} className="rounded-sm bg-paper border border-paper px-6 py-3 text-sm font-medium text-coral hover:bg-transparent hover:text-paper disabled:opacity-60 transition-colors">{state==="submitting"?"Sending…":"Submit"}</button>
             </form>
           )}
