@@ -50,9 +50,9 @@ If a `$select` field is rejected, compare it with `$metadata` and drop the unkno
 
 ### Refresh
 
-The feed is cached for 12 hours (`LISTING_REFRESH_SECONDS` and `unstable_cache`). `/api/listings/refresh` expires that cache and reads the source again. `vercel.json` schedules it at `0 */12 * * *`. The route requires `Authorization: Bearer $CRON_SECRET`.
+The feed is cached for 12 hours (`LISTING_REFRESH_SECONDS` and `unstable_cache`). The next request after that reads the source again, so a visited site does not serve listings older than 12 hours.
 
-On a host plan that only allows a daily cron, the 12 hour cache lifetime still refreshes the feed on the next visit after it expires. A plan that allows the schedule above refreshes it every 12 hours even when the site is quiet.
+`/api/listings/refresh` expires that cache and reads the source immediately. It requires `Authorization: Bearer $CRON_SECRET`. `vercel.json` schedules it once a day at 16:00 UTC (`0 16 * * *`), which is the schedule a Vercel Hobby project will accept. On a plan that allows more than one run per day, change that schedule to `0 */12 * * *` so the job also runs when nobody is visiting.
 
 ### Map
 
