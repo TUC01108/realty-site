@@ -1,4 +1,5 @@
 import { NEIGHBORHOODS } from "../../data/neighborhoods";
+import { districtName } from "./format";
 import type { LandTenure, Listing, PropertyType } from "./types";
 
 export type SortKey = "newest" | "price-asc" | "price-desc" | "lot-desc";
@@ -13,6 +14,7 @@ export type ListingFilters = {
   minAcres: number | null;
   lavaZones: number[];
   tenure: LandTenure | "any";
+  text: string;
 };
 
 export type MapBounds = {
@@ -32,6 +34,7 @@ export const EMPTY_FILTERS: ListingFilters = {
   minAcres: null,
   lavaZones: [],
   tenure: "any",
+  text: "",
 };
 
 export const PRICE_STOPS = [250000, 400000, 600000, 800000, 1000000, 1500000, 2000000, 3000000, 5000000] as const;
@@ -69,6 +72,7 @@ export function parseListingSearch(search: string): { filters: ListingFilters; s
       minAcres: oneOf(params.get("acres"), ACRE_STOPS),
       lavaZones: [...new Set(zones)].sort((a, b) => a - b),
       tenure: tenure && TENURES.has(tenure as LandTenure) ? (tenure as LandTenure) : "any",
+      text: (params.get("q") ?? "").trim().slice(0, 80),
     },
     sort: sort && SORTS.has(sort as SortKey) ? (sort as SortKey) : "newest",
   };
@@ -85,6 +89,7 @@ export function filtersToSearch(filters: ListingFilters, sort: SortKey): string 
   if (filters.minAcres != null) params.set("acres", String(filters.minAcres));
   if (filters.lavaZones.length > 0) params.set("zones", filters.lavaZones.join(","));
   if (filters.tenure !== "any") params.set("tenure", filters.tenure);
+  if (filters.text.trim()) params.set("q", filters.text.trim());
   if (sort !== "newest") params.set("sort", sort);
   const query = params.toString();
   return query ? `?${query}` : "";
@@ -101,6 +106,7 @@ export function countActiveFilters(filters: ListingFilters): number {
   if (filters.minAcres != null) count += 1;
   if (filters.lavaZones.length > 0) count += 1;
   if (filters.tenure !== "any") count += 1;
+  if (filters.text.trim()) count += 1;
   return count;
 }
 
@@ -116,6 +122,18 @@ export function matchesFilters(listing: Listing, filters: ListingFilters): boole
     return false;
   }
   if (filters.tenure !== "any" && listing.tenure !== filters.tenure) return false;
+  const text = filters.text.trim().toLowerCase();
+  if (text) {
+    const haystack = [
+      listing.streetAddress,
+      listing.city,
+      listing.postalCode,
+      listing.mlsNumber ?? "",
+      listing.propertyType,
+      districtName(listing.districtSlug),
+    ].join(" ").toLowerCase();
+    if (!haystack.includes(text)) return false;
+  }
   return true;
 }
 

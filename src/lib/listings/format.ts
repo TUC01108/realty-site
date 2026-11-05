@@ -14,17 +14,39 @@ export function formatPrice(value: number): string {
   }).format(value);
 }
 
-export function formatPriceShort(value: number): string {
+export function formatPinPrice(value: number): string {
   if (value >= 1_000_000) {
-    const millions = value / 1_000_000;
-    const digits = value % 100_000 === 0 ? 1 : 2;
-    const text = millions.toFixed(digits).replace(/\.0$/, "");
-    return `$${text}M`;
+    const millions = Math.round((value / 1_000_000) * 10) / 10;
+    return `${millions.toFixed(1).replace(/\.0$/, "")}M`;
   }
-  if (value >= 1_000) {
-    return `$${Math.round(value / 1_000)}k`;
+  return `${Math.round(value / 1000)}K`;
+}
+
+export function formatPriceShort(value: number): string {
+  return formatPinPrice(value);
+}
+
+export function listingFacts(listing: Listing): string {
+  if (listing.propertyType === "Land" || listing.bedrooms == null) {
+    return `Land | ${formatLot(listing.lotAcres)}`;
   }
-  return formatPrice(value);
+  const parts = [
+    `${formatCount(listing.bedrooms)} bds`,
+    listing.bathrooms == null ? null : `${formatCount(listing.bathrooms)} ba`,
+    listing.livingAreaSqFt == null ? null : `${listing.livingAreaSqFt.toLocaleString("en-US")} sqft`,
+    listing.propertyType,
+  ].filter((part): part is string => Boolean(part));
+  return parts.join(" | ");
+}
+
+const NEW_LISTING_MS = 45 * 24 * 60 * 60 * 1000;
+
+export function isNewListing(listedAt: string | null, now = Date.now()): boolean {
+  if (!listedAt) return false;
+  const listed = Date.parse(`${listedAt.slice(0, 10)}T12:00:00Z`);
+  if (Number.isNaN(listed)) return false;
+  const age = now - listed;
+  return age >= 0 && age <= NEW_LISTING_MS;
 }
 
 export function formatAcres(acres: number): string {

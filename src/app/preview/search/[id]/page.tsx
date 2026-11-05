@@ -95,10 +95,9 @@ export default async function PreviewListingPage({ params }: Props) {
       <div className="mt-8 h-80 overflow-hidden rounded-sm border border-line">
         <ListingMap
           listings={[listing]}
-          selectedId={listing.id}
+          selectedId={null}
           fitToken={listing.id}
           layoutKey="detail"
-          focusNonce={0}
         />
       </div>
     </article>
