@@ -6,6 +6,7 @@ const BASE = "https://www.yourbigislandrealestate.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
+  // /preview/search is a noindex sample-listing preview and is left out on purpose.
   const static_pages: MetadataRoute.Sitemap = [
     { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE}/areas`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },

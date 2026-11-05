@@ -18,10 +18,9 @@ export default function FeaturedListings() {
         </div>
 
         {/*
-          IDX NOTE: This grid is a layout placeholder. Once the IDX
-          vendor (iHomefinder / IDX Broker / Trestle) is wired up, replace
-          PLACEHOLDER_LISTINGS with the live feed, or drop the vendor's
-          embed/widget directly into this section.
+          IDX NOTE: Public pages stay on placeholders until the HIS IDX
+          license is active. The hidden preview at /preview/search uses the
+          listing adapter in src/lib/listings.
         */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PLACEHOLDER_LISTINGS.map((listing) => (

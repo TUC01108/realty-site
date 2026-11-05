@@ -13,3 +13,20 @@ body { background: var(--paper); color: var(--ink); font-family: var(--font-sans
 .font-display { font-family: var(--font-display); }
 .eyebrow { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
 .hairline { border-color: var(--line); }
+.listing-marker {
+  border: 1px solid #ff4c4c;
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.18);
+  cursor: pointer;
+}
+.listing-marker.is-selected { background: #ff4c4c; color: #fff; }
+.maplibregl-ctrl-attrib { font-size: 11px; background-color: rgba(255, 255, 255, 0.92); }
+.maplibregl-ctrl-attrib a { color: #1a1a1a; }
