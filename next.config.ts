@@ -17,12 +17,16 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' blob: data: https://blogger.googleusercontent.com",
+  // OpenFreeMap serves the preview map: sprites and shaded relief as images,
+  // style, vector tiles, and glyphs as fetches. All of those hosts are
+  // tiles.openfreemap.org. MapLibre starts its tile worker from a blob URL.
+  "img-src 'self' blob: data: https://blogger.googleusercontent.com https://tiles.openfreemap.org",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://tiles.openfreemap.org",
   "media-src 'self'",
   "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
-  "worker-src 'self'",
+  "worker-src 'self' blob:",
+  "child-src blob:",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -69,6 +73,14 @@ const nextConfig: NextConfig = {
             value: contentSecurityPolicy,
           },
         ],
+      },
+      {
+        source: "/preview",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/preview/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },
